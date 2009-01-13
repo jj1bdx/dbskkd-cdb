@@ -1,0 +1,177 @@
+dbskkd-cdb Release Notes in Japanese
+for version dbskkd-cdb-1.01
+by Kenji Rikitake <kenji.rikitake@acm.org>
+$Id: Release-Notes.Japanese,v 1.5 1999/09/28 12:23:41 kenji Exp $
+
+●dbskkd-cdbの概要
+
+dbskkd-cdbは、skkserv 3.9.3をベースにしつつ、D. J. Bernstein(以下DJB)氏
+のcdbを使ってデータベース化した辞書を利用することで高速化をはかっている。
+基本的動作はskkservと同様である。inetd+tcp_wrapper、あるいはtcpserverな
+ど、標準入出力とTCP/IPソケットのインターフェースを取るサーバから呼ぶスタ
+イルを取ることで、プログラムの軽量化とアクセス制御を可能にした。
+
+本サーバのアイディアは同種のツールpskkservによる。
+
+インストールに際してはDJB氏のツールcdb-0.55が必要である。入手に際しては
+次のURLを参照のこと。
+
+ftp://koobera.math.uic.edu/www/cdb.html
+
+cdb-0.55はキットそのものは改変しない限り配布自由である。また、ソースコー
+ドはpublic domainとして自由に利用できる。本キットにはcdb-0.55のパッケー
+ジからcdb.hとuint32.hをコピーして含めている。
+
+4.4BSD系でlibutilにsetproctitle()が用意されているものについては使用し、
+どのホストからのアクセスかをpsで見られるようにしている。
+
+●バージョン別更新履歴
+
+Version 0.2からは、skkservと同様にSERVER_NOT_FOUNDの時に入力文字列をその
+まま返すようにした。これはskkinputがこの挙動を要求しているからである。
+
+Version 0.50からは、cdb形式の辞書ファイルを使う。Version 0.3以前とは互換
+性はない。注意が必要である。
+
+Version 0.51からは、ユーザが直接dbskkd-cdbを起動した場合、標準入出力で通
+信を行うようにしている。これはskkservの代替を目指すための第一歩である。
+また、古いBSDコードからのerr()関数を使うのを止め、syslog()を呼ぶための関
+数を自前で用意した。
+
+Version 0.52ではskktocdbm.shがスペースを含んだ変換候補を正しくcdbm形式に
+直さないのを修正した(木原 英人氏のパッチによる)。またdbskkd-cdb.cの
+JISHO_FILEに関するコードを一部削除している。
+
+Version 1.00は基本的には0.52とほとんど変わらない。ただし、外部のMakefile
+でJISHO_FILEを定義していればそちらが優先される。これはDebian GNU/Linuxの
+maintainer川村さんからの要請によるものである。このリリースでは英文の解説
+書が入る予定なので、このファイルはRelease-Notes.Japanese と名称変更する
+ことにした。
+
+Version 1.01ではVersion 1.00で起こり得るbuffer overrunのバグを修正した。
+
+●dbskkd-cdbの動作環境
+
+dbskkd-cdbは、現時点では
+
+	FreeBSD 2.2.8-RELEASE
+	FreeBSD 3.1-RELEASE
+	Debian GNU/Linux 2.1 (2.0.35 kernel + libc-2.0.7u)
+	Linux 2.2.9 + libc6 2.1.1
+
+にて基本的動作を確認している。他のOSでも大きな変更なしに動作すると思われ
+る。ただし動作の確認は動作の保証を意味しない。また動作条件の細かな変化に
+よる誤動作については一切保証しない。
+
+辞書変換についてはskk 9.6添付のSKK-JISYO.L(118905件のエントリがある)で確
+認している。2808757バイトのファイルサイズが5425525バイトまで増大している。
+
+●インストール前の注意
+
+1. キットを展開したディレクトリをカレントディレクトリとする。
+
+2. cdb-0.55を別ディレクトリに展開してコンパイルしておく。
+   コンパイル後の生成されたファイルcdbmakeを実行可能にしておくこと。
+   また、生成されたlibcdb.aをカレントディレクトリにコピーしておく。
+   libcdb.aはdbskkd-cdb生成の際に必要である。
+
+3. 添付のmakeskkcdb.shを実行する。このスクリプトでは
+   辞書ファイルはskktocdbm.shの標準入力に与えるようになっている。
+   デフォルトは /usr/local/share/skk/SKK-JISYO.Lを指定している。
+   また、デフォルトではカレントディレクトリにSKK-JISYO.L.cdbが作られる。
+   必要に応じてデフォルト値は変更すること。
+
+4. 作られたSKK-JISYO.L.cdbを適切なディレクトリにインストールする。
+   通常はSKK辞書のディレクトリと同じにしておくとよいだろう。
+   この辞書の整合性はcdbパッケージ中のcdbtestやcdbstatsでチェックできる。
+
+5. dbskkd-cdbをコンパイルするためmakeする。
+
+●インストールの際の注意
+
+1. dbskkd-cdb.cのSERVER_DIRを実際にサーバを置くディレクトリに設定する。
+   デフォルトは /usr/local/etc/dbskkd 。
+
+2. dbskkd-cdb.cのJISHO_FILEを実際にcdb形式にした辞書ファイルのパス名とする。
+   デフォルトは /usr/local/share/skk/SKK-JISYO.L.cdb 。
+
+3. コンパイルフラグのLOG_PEERINFOはtcp_wrapperなどを使わない際に
+   どのホストから接続してきたかを記録するためのものである。
+   デフォルトでは設定していない。
+
+4. コンパイルフラグのUCSPI_TCPを定義しておくと、
+   tcpserverが子プロセスに渡す環境変数に含まれるIPアドレス等の情報を
+   使うようになる。
+
+●inetdなどの変更の仕方
+
+1. /etc/servicesに
+
+	skkserv         1178/tcp
+   
+   を加える。
+
+2. /etc/inetd.confに
+
+skkserv stream  tcp     nowait  nobody  /usr/local/libexec/tcpd       /usr/local/etc/dbskkd/dbskkd-cdb
+   
+   を加える。(FreeBSD 2.2.8-RELEASEでtcp_wrapper使用の場合)
+   root権限では動作させてはならない。nobodyで動かすこと。
+   必要ならば専用のuidを作成することも有効であろう。
+
+3. tcp_wrapperを使う際は/etc/hosts.allowにdbskkd-cdbのためのエントリを加える。
+
+●注意・限界・改良の余地
+
+dbskkd-cdbは一旦起動されると終了するまではcdb辞書ファイルをオープンした
+ままになっている。cdbではオープンされたファイルの中身は変わらないことを
+仮定しているため、dbskkd-cdbを起動した状態でcdb辞書ファイルの内容を変更
+してはならない。cdb辞書ファイルを作り直す場合は、dbskkd-cdbを起動してい
+ないことを確認する必要がある。
+
+変なコマンドが来るとsyslogにerrorを吐いて落ちるようにしてある。まだエラー
+チェックは甘い可能性がある。
+
+syslogの取り方は今のままでいいのかどうか検討する余地がある。
+
+個人的にはSERVER_NOT_FOUNDの時の挙動は無駄だと思うが、これはskkinput側の
+変更が必要でちょっと難しそうなので、こちらで対応しておくことにした。
+skkinput側が、SERVER_NOT_FOUNDの時、"4"だけが返ってきても大丈夫なように
+すればこの問題は解決するが、この問題については各種サーバの開発者の意見を
+調整して仕様を確定することが必要だろう。このリリースノートの執筆時点では
+現行の仕様が慣行として確定している。
+
+●謝辞
+
+本プログラムの開発にあたっては、
+skkの開発者 佐藤 雅彦氏、中島 幹夫氏およびcontributorの皆様、
+skkservの開発者 亀山 幸義氏およびcontributorの皆様、
+pskkservの開発者 佐藤 正章氏、中島 幹夫氏およびcontributorの皆様、
+skkinputの開発者 阪本 崇氏およびcontributorの皆様、
+そしてskkの発展に貢献した利用者の皆様に敬意と感謝の意を表します。
+
+また、以下の方々には開発にあたって有用な助言をいただきました。
+ここに感謝の意を表します。
+
+本田 康弘氏 <honda@kashio.info.mie-u.ac.jp>、
+中原 早生氏 <nakahara@mis.hiroshima-u.ac.jp>、
+菊地 高広氏 <kick@kyoto.wide.ad.jp>、
+まつもとひでお氏 <hideo-m@nerv.org>、
+鯉江 英隆氏 <koie@suri.co.jp>
+川村 尚生氏 <kawamura@ike.tottori-u.ac.jp>
+木原 英人氏 <deton@m1.interq.or.jp>
+稲員 力士氏 <rik@mtb.biglobe.ne.jp>
+松下 誠氏 <matusita@jp.freebsd.org>
+
+●配布条件
+
+本プログラムの配布条件についてはskk、skkservと同様 GPLに準拠しています。
+詳しい条件については各ソースファイルを参考にしてください。
+
+●質問など
+
+本プログラムに関するご質問は電子メールにて
+	kenji-dbskkd-cdb@k2r.org
+までお願いします。
+
+[End of memorandum]
