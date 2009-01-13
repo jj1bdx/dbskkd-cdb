@@ -1,0 +1,7 @@
+#!/bin/sh
+# sample /service/dbskkd-cdb/run file
+exec 2>&1
+exec envuidgid dbskkd softlimit -d100000 -s100000 \
+tcpserver -x ./tcprules.cdb \
+-vDRH -l hostname IP.ADD.RE.SS skkserv \
+/usr/local/libexec/dbskkd-cdb

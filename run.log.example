@@ -1,0 +1,3 @@
+#!/bin/sh
+# sample /service/dbskkd-cdb/log/run file
+exec setuidgid svlog multilog t ./main

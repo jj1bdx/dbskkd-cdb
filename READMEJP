@@ -1,0 +1,135 @@
+dbskkd-cdb Release Notes in Japanese
+for version dbskkd-cdb-1.71dev
+by Kenji Rikitake <kenji.rikitake@acm.org>
+$Id: READMEJP,v 1.3 2000/04/28 13:05:50 kenji Exp $
+
+*** preliminary ***
+
+●dbskkd-cdbの概要
+
+dbskkd-cdbは、skkservと同様の機能を提供するSKK用の共通辞書サーバーである。
+辞書検索に際してはD. J. Bernstein(以下DJB)氏のcdbを使ってデータベース化
+し高速にしている。本サーバーのアイディアは同種のツールpskkservをヒントに
+している。
+
+dbskkd-cdbの使用には、DJB氏のツール cdb-0.75、daemontools-0.70 と 
+ucspi-tcp-0.84 を 使うことを前提にしている。これらの入手に際しては次の
+URLを参照のこと。
+
+http://cr.yp.to/cdb.html
+http://cr.yp.to/daemontools.html
+http://cr.yp.to/ucspi-tcp.html
+
+●dbskkd-cdbの動作環境
+
+dbskkd-cdbは、現時点では
+
+	FreeBSD 3.4-RELEASE
+
+にて基本的動作を確認している。他のOSでも大きな変更なしに動作すると思われ
+る。ただし動作の確認は動作の保証を意味しない。また動作条件の細かな変化に
+よる誤動作については一切保証しない。
+
+辞書変換についてはskk 9.6添付のSKK-JISYO.L(118905件のエントリがある)で確
+認している。2808757バイトのファイルサイズが5425525バイトまで増大している。
+
+dbskkd-cdb-1.01 の cdb 形式の辞書は本プログラムでも変更なく使える。これは
+cdb 自身が上位互換性を維持していることによる。
+
+●インストール前の注意
+
+1. daemontoolsとucspi-tcp、cdbをインストールしておく。
+   cdbのソースは後で必要となるので消さないこと。
+
+2. キットを展開したディレクトリをカレントディレクトリとする。
+
+3. copyfromcdb.sh の中の環境変数 CDBDIR に cdb-0.75 を展開した
+   ディレクトリ名を設定する。デフォルト値は ~/src/cdb-0.75 となっている。
+   このディレクトリの値は cdb-0.75 のソースをコピーするために必要である。
+
+4. 添付のmakeskkcdb.shを実行する。このスクリプトでは
+   辞書ファイルはskktocdbm.shの標準入力に与えるようになっている。
+   デフォルトは /usr/local/share/skk/SKK-JISYO.Lを指定している。
+   また、デフォルトではカレントディレクトリにSKK-JISYO.L.cdbが作られる。
+   この辞書ファイルはインストールの際 dbskkd-cdb が chroot する
+   ディレクトリに置く。
+
+5. dbskkd-cdbをコンパイルするためmakeする。
+   コンパイルの際はcdb-0.75からコンパイルに必要な以下のソースをコピーする。
+
+	byte.h cdb.h error.h readwrite.h seek.h uint32.h
+	byte_copy.c byte_diff.c cdb.c cdb_hash.c
+	error.c seek_set.c uint32_unpack.c
+
+6. make install で dbskkd-cdb を実行ディレクトリに転送する。
+   デフォルト値は /usr/local/libexec へ転送する。
+
+●インストールの際の注意
+
+以下の注意はあらかじめ daemontools の実行方式を熟知していることを前提と
+している。まず daemontools のマニュアルを熟読すること。
+付属の run.example と run.log.example は
+/service/dbskkd-cdb/run と /service/dbskkd-cdb/log/run の設定サンプルである。
+/service/dbskkd-cdb はログを取るので chmod +t しておくこと。
+/service/dbskkd-cdb/root へ chroot するので、このディレクトリも作る。
+また、uid dbskkd (gid dbskkd) の実行用ユーザ、uid svlog (gid svlog) のログ記録
+用ユーザを作成しておく。
+SKK-JISYO.L.cdb は /service/dbskkd-cdb/root/ に置く。
+この辞書の整合性はcdbパッケージ中のcdbtestやcdbstatsでチェックできる。
+
+●注意・限界・改良の余地
+
+dbskkd-cdbは一旦起動されると終了するまではcdb辞書ファイルをオープンした
+ままになっている。cdbではオープンされたファイルの中身は変わらないことを
+仮定しているため、dbskkd-cdbを起動した状態でcdb辞書ファイルの内容を変更
+してはならない。cdb辞書ファイルを作り直す場合は、dbskkd-cdbを起動してい
+ないことを確認する必要がある。
+
+エラーメッセージはstderrからmultilogで記録するようにしてある。まだエラー
+チェックは甘い可能性がある。
+
+個人的にはSERVER_NOT_FOUNDの時の挙動は無駄だと思うが、これはskkinput側の
+変更が必要でちょっと難しそうなので、こちらで対応しておくことにした。
+skkinput側が、SERVER_NOT_FOUNDの時、"4"だけが返ってきても大丈夫なように
+すればこの問題は解決するが、この問題については各種サーバの開発者の意見を
+調整して仕様を確定することが必要だろう。このリリースノートの執筆時点では
+現行の仕様が慣行として確定している。
+
+将来的にはcdb-0.75のソースコードの一部をそのまま使いたいが、本件について
+はライセンスの扱いが不明確なため、まずはcdb-0.75のキットからコピーすると
+いう方法を取った。今後この方法は変わる可能性がある。
+
+1.70devではfile descriptorを間違えるという初歩的なバグがあった。(前野 年
+紀氏による指摘で発見。)
+
+●謝辞
+
+本プログラムの開発にあたっては、
+skkの開発者 佐藤 雅彦氏、中島 幹夫氏およびcontributorの皆様、
+skkservの開発者 亀山 幸義氏およびcontributorの皆様、
+pskkservの開発者 佐藤 正章氏、中島 幹夫氏およびcontributorの皆様、
+skkinputの開発者 阪本 崇氏およびcontributorの皆様、
+そしてskkの発展に貢献した利用者の皆様に敬意と感謝の意を表します。
+
+また、cdb の利用に際しては、
+cdb他の作者である Daniel J. Bernstein氏に最大限の賛辞を送ると共に、
+DJB toolsグループの前野 年紀氏ほか参加者の皆様に感謝します。
+
+また、以下の方々には開発にあたって有用な助言をいただきました。
+ここに感謝の意を表します(敬称略)。
+
+本田 康弘、中原 早生、菊地 高広、まつもとひでお、鯉江 英隆、川村 尚生、
+木原 英人、稲員 力士、松下 誠、山縣 敦。
+
+●配布条件
+
+本プログラムの配布条件についてはskk、skkservと同様 GPLに準拠しています。
+詳しい条件については各ソースファイルを参考にしてください。
+
+●質問など
+
+本プログラムに関するご質問やご意見は電子メールにて
+	kenji-dbskkd-cdb@k2r.org
+までお願いします。
+
+[End of memorandum]

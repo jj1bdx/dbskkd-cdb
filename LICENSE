@@ -1,5 +1,10 @@
+/*
+ * The following license statement does not apply to
+ * the source code derived from Daniel J. Bernstein's
+ * cdb-0.75 package.
+ */
 /* 
- * Copyright (c) 1998 by Kenji Rikitake. All rights reserved.
+ * Copyright (c) 1998-2000 by Kenji Rikitake. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
