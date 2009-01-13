@@ -27,7 +27,9 @@ clean:
 
 dbskkd-cdb: byte_copy.o byte_diff.o cdb.o cdb_hash.o dbskkd-cdb.o \
 		error.o seek_set.o uint32_unpack.o
-	$(CC) $(COMPAT) $(PRIVATE) -o dbskkd-cdb $>
+	$(CC) $(COMPAT) $(PRIVATE) -o dbskkd-cdb \
+		byte_copy.o byte_diff.o cdb.o cdb_hash.o dbskkd-cdb.o \
+		error.o seek_set.o uint32_unpack.o
 
 dbskkd-cdb.o: dbskkd-cdb.c cdb.h uint32.h
 	$(CC) $(COMPAT) $(PRIVATE) -DSERVER_DIR=\"$(SERVERDIR)\" -c dbskkd-cdb.c

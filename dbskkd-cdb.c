@@ -1,10 +1,9 @@
 /* 
  * dbskkd-cdb.c
  * ucspi-tcp-style SKK Server for D. J. Bernstein's cdb
- * $Id: dbskkd-cdb.c,v 3.5 2000/04/28 13:06:02 kenji Exp $
  * (cdb, daemontools and ucspi-tcp required)
  *
- * Copyright (c) 1998-2000 by Kenji Rikitake. All rights reserved.
+ * Copyright (c) 1998-2009 by Kenji Rikitake. All rights reserved.
  * See LICENSE of the distribution kit for the redistribution conditions.
  */
 
@@ -65,9 +64,8 @@ void diesys(char *why)
 
 int main(int argc, char *argv[])
 {
-  static unsigned char combuf[BUFSIZE];
-  static char data[DATASIZE];
-  register unsigned char *pbuf, *key, *p;
+  static char combuf[BUFSIZE], data[DATASIZE];
+  register char *pbuf, *key, *p;
   static struct cdb diccdb;
   int id, dicfd, ex, length;
   unsigned int keylen, datalen;
