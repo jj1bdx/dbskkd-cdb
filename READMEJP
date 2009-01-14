@@ -7,6 +7,9 @@ last updated 14-JAN-2009
 日本語が変なのは，いずれ直します．_o_
 
 ●1.71devからの修正箇所のメモ
+(see CHANGES for details)
+
+木下達也さん(Debian maintainer)からのパッチを適用
 
 以下の Twitter @konosuke 氏からの指摘により，BSD make依存の部分をGNU
 makeでも通るようにした

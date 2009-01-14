@@ -1,3 +1,16 @@
+20090114
+	patches from Tatsuya Kinoshita (Debian package maintainer)
+	* awk-locale.patch: Set LC_ALL to C for awk in skktocdbm.sh.
+	* datasize.patch: Increase DATASIZE from 2048 to 4096 so that the
+	  longest line of SKK-JISYO.L can be used.
+	also Tatsuya pointed out the uint32 problem (which has been fixed)
+	  of variable datalen
+20090113
+	BSD make dependencies resolved as pointed out in the following tweet:
+		http://twitter.com/konosuke/status/1094925767
+	cleanupcdb.sh added
+	gcc-4.2.1 signedness warning cleared
+		by quitting using unsigned chars
 20000312
 	Changes from 1.01 to 1.70dev:
 	* chroot()s to the SERVER_DIR

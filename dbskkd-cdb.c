@@ -34,7 +34,7 @@
 #endif /* JISHO_FILE */
 
 #define	BUFSIZE		(1024)	/* max size of a request */
-#define DATASIZE	(2048)	/* max size of a result */
+#define DATASIZE	(4096)	/* max size of a result */
 
 #define CLIENT_END	'0'
 #define CLIENT_REQUEST	'1'
