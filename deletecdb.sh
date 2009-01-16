@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id: deletecdb.sh,v 1.1 2000/03/25 14:28:31 kenji Exp $
 
 RM=/bin/rm
 

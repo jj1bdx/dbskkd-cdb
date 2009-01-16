@@ -1,5 +1,4 @@
 # dbskkd-cdb Makefile
-# $Id: Makefile,v 3.2 2000/03/25 14:30:58 kenji Exp $
 
 # please define SERVERDIR
 SERVERDIR = /service/dbskkd-cdb/root

@@ -1,5 +1,4 @@
 #!/bin/sh
-# $Id: copyfromcdb.sh,v 1.1 2000/03/25 14:26:10 kenji Exp $
 
 RM=/bin/rm
 
