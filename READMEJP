@@ -1,10 +1,12 @@
 dbskkd-cdb Release Notes in Japanese
-for version post dbskkd-cdb-1.71dev
+for version post dbskkd-cdb-1.99expr
 by Kenji Rikitake <kenji.rikitake@acm.org>
-last updated 14-JAN-2009
+last updated 18-JAN-2009
 
 $BCm0U(B: $BEvJ,$N4V(B trunk $B$G:n6H$7$^$9!%(B
 $BF|K\8l$,JQ$J$N$O!$$$$:$lD>$7$^$9!%(B_o_
+$B$^$?%F%9%HCf$N%3!<%I$G$9!%(B
+$B%;%-%e%j%F%#>e$NLdBjEy$OJ]>Z$7$^$;$s!%(B
 
 $B!|(B1.71dev$B$+$i$N=$@52U=j$N%a%b(B
 (see CHANGES for details)
@@ -19,23 +21,27 @@ http://twitter.com/konosuke/status/1094925767
 gcc-4.2.1 (FreeBSD 7.1-RELEASE stock cc) $B$N(B signedness $B$NLdBj$r$H$j$"$((B
 $B$:7A<0E*$K=$@5(B($B0UL#E*$K$bLdBj$O$J$$$H;W$&$,!$MW3NG'(B)
 
-cdb$B%^!<%8$NLdBj$O;D$C$F$$$k$,!$$H$j$"$($::n6H4D6-$r0];}$9$k$?$a$K(B
-cleanupcdb.sh $B$rDI2C(B
+chroot, setuid, setgid $B$r$d$a$?!%(B
+
+tinycdb $B$K%j%s%/$9$k$h$&$KJQ99(B
+FreeBSD $B$G$b<g$J(B Linux distro $B$G$b(B tinycdb-0.76 $B$N(B cdb.h $B$OJLESF~<j2D(B
+(FreeBSD databases/tinycdb, Debian libcdb-dev package)
 
 $B!|(Bdbskkd-cdb$B$N35MW(B
 
 dbskkd-cdb$B$O!$(Bskkserv$B$HF1MM$N5!G=$rDs6!$9$k(BSKK$BMQ$N6&DL<-=q%5!<%P!<$G$"$k!%(B
 $B<-=q8!:w$K:]$7$F$O(BD. J. Bernstein($B0J2<(BDJB)$B;a$N(Bcdb$B$r;H$C$F%G!<%?%Y!<%92=(B
 $B$79bB.$K$7$F$$$k!%K\%5!<%P!<$N%"%$%G%#%"$OF1<o$N%D!<%k(Bpskkserv$B$r%R%s%H$K(B
-$B$7$F$$$k!%(B
-
-dbskkd-cdb$B$N;HMQ$K$O!$(BDJB$B;a$N%D!<%k(B cdb-0.75$B!$(Bdaemontools-0.70 $B$H(B 
-ucspi-tcp-0.84 $B$r(B $B;H$&$3$H$rA0Ds$K$7$F$$$k!%$3$l$i$NF~<j$K:]$7$F$O<!$N(B
-URL$B$r;2>H$N$3$H!%(B
-
+$B$7$F$$$k!%(Bcdb$B$NF0:n$K$O<!$N(BURL$B$r;2>H$9$k$3$H!%(B
 http://cr.yp.to/cdb.html
-http://cr.yp.to/daemontools.html
+
+dbskkd-cdb $B$O(B ucspi-tcp $B$N(B tcpserver $B$,Ds6!$9$k>pJs$r;H$C$F$$$k!%(B
+$B$3$l$K$D$$$F$O0J2<$N(BURL$B$r;2>H$9$k$3$H!%(B
 http://cr.yp.to/ucspi-tcp.html
+
+$BK\%W%m%0%i%`$O(Bcdb$B8_49%i%$%V%i%j$G$"$k(Btinycdb$B$X$N%j%s%/$rA0Ds$H$7$F$$$k!%(B
+tinycdb$B$N>\:Y$K$D$$$F$O0J2<$N(BURL$B$r;2>H$9$k$3$H!%(B
+http://www.corpit.ru/mjt/tinycdb.html
 
 $B!|(Bdbskkd-cdb$B$NF0:n4D6-(B
 
@@ -58,44 +64,24 @@ cdb $B<+?H$,>e0L8_49@-$r0];}$7$F$$$k$3$H$K$h$k!%(B
 
 $B!|%$%s%9%H!<%kA0$NCm0U(B
 
-1. daemontools$B$H(Bucspi-tcp$B!$(Bcdb$B$r%$%s%9%H!<%k$7$F$*$/!%(B
-   cdb$B$N%=!<%9$O8e$GI,MW$H$J$k$N$G>C$5$J$$$3$H!%(B
-
-2. $B%-%C%H$rE83+$7$?%G%#%l%/%H%j$r%+%l%s%H%G%#%l%/%H%j$H$9$k!%(B
-
-3. copyfromcdb.sh $B$NCf$N4D6-JQ?t(B CDBDIR $B$K(B cdb-0.75 $B$rE83+$7$?(B
-   $B%G%#%l%/%H%jL>$r@_Dj$9$k!%%G%U%)%k%HCM$O(B ~/src/cdb-0.75 $B$H$J$C$F$$$k!%(B
-   $B$3$N%G%#%l%/%H%j$NCM$O(B cdb-0.75 $B$N%=!<%9$r%3%T!<$9$k$?$a$KI,MW$G$"$k!%(B
-
-4. $BE:IU$N(Bmakeskkcdb.sh$B$r<B9T$9$k!%$3$N%9%/%j%W%H$G$O(B
+1. $BE:IU$N(Bmakeskkcdb.sh$B$r<B9T$9$k!%$3$N%9%/%j%W%H$G$O(B
    $B<-=q%U%!%$%k$O(Bskktocdbm.sh$B$NI8=`F~NO$KM?$($k$h$&$K$J$C$F$$$k!%(B
    $B%G%U%)%k%H$O(B /usr/local/share/skk/SKK-JISYO.L$B$r;XDj$7$F$$$k!%(B
    $B$^$?!$%G%U%)%k%H$G$O%+%l%s%H%G%#%l%/%H%j$K(BSKK-JISYO.L.cdb$B$,:n$i$l$k!%(B
-   $B$3$N<-=q%U%!%$%k$O%$%s%9%H!<%k$N:](B dbskkd-cdb $B$,(B chroot $B$9$k(B
-   $B%G%#%l%/%H%j$KCV$/!%(B
+   $B$3$N<-=q%U%!%$%k$O%$%s%9%H!<%k$N:](B dbskkd-cdb.c $BCf$N(B
+   JISHO_FILE $B$G;XDj$9$k%G%#%l%/%H%j$KCV$/!%(B
+   JISHO_FILE $B$N%G%U%)%k%HCM$O(B /usr/local/share/skk/SKK-JISYO.L.cdb $B$G$"$k!%(B
 
 5. dbskkd-cdb$B$r%3%s%Q%$%k$9$k$?$a(Bmake$B$9$k!%(B
-   $B%3%s%Q%$%k$N:]$O(Bcdb-0.75$B$+$i%3%s%Q%$%k$KI,MW$J0J2<$N%=!<%9$r%3%T!<$9$k!%(B
-
-	byte.h cdb.h error.h readwrite.h seek.h uint32.h
-	byte_copy.c byte_diff.c cdb.c cdb_hash.c
-	error.c seek_set.c uint32_unpack.c
+   $B$3$N:](B tinycdb $BCf$N(B cdb.h $B$,I,MW$H$J$k!%(B
+   $B$^$?(B tinycdb $BCf$N(B libcdb.a $B$r%j%s%/$9$k!%(B
 
 6. make install $B$G(B dbskkd-cdb $B$r<B9T%G%#%l%/%H%j$KE>Aw$9$k!%(B
    $B%G%U%)%k%HCM$O(B /usr/local/libexec $B$XE>Aw$9$k!%(B
 
 $B!|%$%s%9%H!<%k$N:]$NCm0U(B
 
-$B0J2<$NCm0U$O$"$i$+$8$a(B daemontools $B$N<B9TJ}<0$r=OCN$7$F$$$k$3$H$rA0Ds$H(B
-$B$7$F$$$k!%$^$:(B daemontools $B$N%^%K%e%"%k$r=OFI$9$k$3$H!%(B
-$BIUB0$N(B run.example $B$H(B run.log.example $B$O(B
-/service/dbskkd-cdb/run $B$H(B /service/dbskkd-cdb/log/run $B$N@_Dj%5%s%W%k$G$"$k!%(B
-/service/dbskkd-cdb $B$O%m%0$r<h$k$N$G(B chmod +t $B$7$F$*$/$3$H!%(B
-/service/dbskkd-cdb/root $B$X(B chroot $B$9$k$N$G!$$3$N%G%#%l%/%H%j$b:n$k!%(B
-$B$^$?!$(Buid dbskkd (gid dbskkd) $B$N<B9TMQ%f!<%6!$(Buid svlog (gid svlog) $B$N%m%05-O?(B
-$BMQ%f!<%6$r:n@.$7$F$*$/!%(B
-SKK-JISYO.L.cdb $B$O(B /service/dbskkd-cdb/root/ $B$KCV$/!%(B
-$B$3$N<-=q$N@09g@-$O(Bcdb$B%Q%C%1!<%8Cf$N(Bcdbtest$B$d(Bcdbstats$B$G%A%'%C%/$G$-$k!%(B
+(TBD)
 
 $B!|Cm0U!&8B3&!&2~NI$NM>CO(B
 
@@ -115,23 +101,19 @@ skkinput$BB&$,!$(BSERVER_NOT_FOUND$B$N;~!$(B"4"$B$@$1$,JV$C$F$-$F$bBg>fIW$J
 $BD4@0$7$F;EMM$r3NDj$9$k$3$H$,I,MW$@$m$&!%$3$N%j%j!<%9%N!<%H$N<9I.;~E@$G$O(B
 $B8=9T$N;EMM$,479T$H$7$F3NDj$7$F$$$k!%(B
 
-$B>-MhE*$K$O(Bcdb-0.75$B$N%=!<%9%3!<%I$N0lIt$r$=$N$^$^;H$$$?$$$,!$K\7o$K$D$$$F(B
-$B$O%i%$%;%s%9$N07$$$,ITL@3N$J$?$a!$$^$:$O(Bcdb-0.75$B$N%-%C%H$+$i%3%T!<$9$k$H(B
-$B$$$&J}K!$r<h$C$?!%:#8e$3$NJ}K!$OJQ$o$k2DG=@-$,$"$k!%(B
-
-1.70dev$B$G$O(Bfile descriptor$B$r4V0c$($k$H$$$&=iJbE*$J%P%0$,$"$C$?!%(B($BA0Ln(B $BG/(B
-$B5*;a$K$h$k;XE&$GH/8+!%(B)
-
 $B!|G[I[>r7o(B
 
-$B4pK\E*$K(BCreative Commons BSD License
+$B%3%s%Q%$%k2DG=$J%=!<%9%3!<%IEy$O(B
+Creative Commons BSD License
 http://creativecommons.org/licenses/BSD/
 $B$K=`5r$7$^$9!%(B
 
-$B>\$7$$>r7o$K$D$$$F$O3F%=!<%9%U%!%$%k$r;29M$K$7$F$/$@$5$$!%(B
+$B$=$NB>$NFbMFJ*$K$D$$$F$O(B
+Creative Commons Attribution 3.0 Unported License
+http://creativecommons.org/licenses/by/3.0/
+$B$K=`5r$7$^$9!%(B
 
-$BK\%W%m%0%i%`$NG[I[>r7o$O(B 1.01, 1.71dev $B$K$D$$$F$O(B
-skk$B!$(Bskkserv$B$HF1MM(B GPL$B$K=`5r$7$F$$$^$7$?!%(B
+$B>\$7$$>r7o$K$D$$$F$O3F%U%!%$%k$r;29M$K$7$F$/$@$5$$!%(B
 
 $B!|0U8+8r49$J$I(B
 
@@ -160,6 +142,6 @@ DJB tools$B%0%k!<%W$NA0Ln(B $BG/5*;a$[$+;22C<T$N3'MM$K46<U$7$^$9!%(B
 $B$3$3$K46<U$N0U$rI=$7$^$9(B($B7I>NN,(B)$B!%(B
 
 $BK\ED(B $B9/90!$Cf86(B $BAa@8!$5FCO(B $B9b9-!$$^$D$b$H$R$G$*!$8q9>(B $B1QN4!$@nB<(B $B>0@8!$(B
-$BLZ86(B $B1Q?M!$0p0w(B $BNO;N!$>>2<(B $B@?!$;3eQ(B $BFX!%(B
+$BLZ86(B $B1Q?M!$0p0w(B $BNO;N!$>>2<(B $B@?!$;3eQ(B $BFX!$LZ2<(B $BC#Li!%(B
 
 [End of memorandum]

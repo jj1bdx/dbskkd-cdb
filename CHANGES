@@ -1,3 +1,11 @@
+20090118
+	version: 1.99-expr.
+		strictly EXPERIMENTAL, NOT a release
+	removed cdb-0.75 dependencies
+	now tinycdb-0.76 required
+	removed chroot, setuid, setgid calls from the program
+	(more like 1.01)
+	Japanese docs changed to reflect the status
 20090114
 	patches from Tatsuya Kinoshita (Debian package maintainer)
 	* awk-locale.patch: Set LC_ALL to C for awk in skktocdbm.sh.
