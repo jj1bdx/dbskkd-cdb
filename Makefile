@@ -18,7 +18,7 @@ dbskkd-cdb: dbskkd-cdb.o
 		dbskkd-cdb.o ${CDBLIB}
 
 dbskkd-cdb.o: dbskkd-cdb.c 
-	$(CC) $(COMPAT) $(PRIVATE) -DSERVER_DIR=\"$(SERVERDIR)\" -c dbskkd-cdb.c
+	$(CC) $(COMPAT) $(PRIVATE) -c dbskkd-cdb.c
 
 error.o: error.c error.h
 
