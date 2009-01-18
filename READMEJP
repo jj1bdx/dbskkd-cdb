@@ -56,11 +56,7 @@ dbskkd-cdbは，現時点では
 FreeBSD の port および debian の package については動作を確認している．
 詳細はそれぞれの maintainer に問い合わせていただきたい．
 
-辞書変換についてはskk 9.6添付のSKK-JISYO.L(118905件のエントリがある)で確
-認している．2808757バイトのファイルサイズが5425525バイトまで増大している．
-
-dbskkd-cdb-1.01 の cdb 形式の辞書は本プログラムでも変更なく使える．これは
-cdb 自身が上位互換性を維持していることによる．
+dbskkd-cdb-1.01 および 1.71dev の cdb ファイルはそのまま動作する．
 
 ●インストール前の注意
 
@@ -72,11 +68,11 @@ cdb 自身が上位互換性を維持していることによる．
    JISHO_FILE で指定するディレクトリに置く．
    JISHO_FILE のデフォルト値は /usr/local/share/skk/SKK-JISYO.L.cdb である．
 
-5. dbskkd-cdbをコンパイルするためmakeする．
+2. dbskkd-cdbをコンパイルするためmakeする．
    この際 tinycdb 中の cdb.h が必要となる．
    また tinycdb 中の libcdb.a をリンクする．
 
-6. make install で dbskkd-cdb を実行ディレクトリに転送する．
+3. make install で dbskkd-cdb を実行ディレクトリに転送する．
    デフォルト値は /usr/local/libexec へ転送する．
 
 ●インストールの際の注意
