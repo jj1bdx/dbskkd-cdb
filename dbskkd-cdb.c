@@ -1,7 +1,7 @@
 /* 
  * dbskkd-cdb.c
- * ucspi-tcp-style SKK Server for D. J. Bernstein's cdb
- * (cdb, daemontools and ucspi-tcp required)
+ * SKK dictionary Server
+ * with Daniel J. Bernstein's cdb database
  *
  * Copyright (c) 1998-2009 by Kenji Rikitake. All rights reserved.
  * See LICENSE of the distribution kit for the redistribution conditions.
@@ -16,21 +16,15 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 
+/* tinycdb required */
 #include "cdb.h"
 
 /* 
- * dbskkd chroot()'ed directory
- */
-#ifndef SERVER_DIR
-#define SERVER_DIR	"/service/dbskkd-cdb/root"
-#endif /* SERVER_DIR */
-
-/* 
  * dbskkd dictionary file 
- * NOTE: specify chroot()'ed path here
+ * default value: FreeBSD port japanese/ddskk
  */
 #ifndef JISHO_FILE
-#define JISHO_FILE	"/SKK-JISYO.L.cdb"
+#define JISHO_FILE	"/usr/local/share/skk/SKK-JISYO.L.cdb"
 #endif /* JISHO_FILE */
 
 #define	BUFSIZE		(1024)	/* max size of a request */
@@ -48,7 +42,7 @@
 #define STDOUT (fileno(stdout))
 
 /* must be terminated with space */
-#define VERSION "dbskkd-cdb-1.71dev " 
+#define VERSION "dbskkd-cdb-1.99expr-20090118-0 " 
 
 /* diesys() originally from DJB's cdb-0.55, modified */
 void diesys(char *why)
@@ -64,32 +58,11 @@ void diesys(char *why)
 
 int main(int argc, char *argv[])
 {
-  static char combuf[BUFSIZE], data[DATASIZE];
-  register char *pbuf, *key, *p;
-  static struct cdb diccdb;
-  int id, dicfd, ex, length;
+  char combuf[BUFSIZE], data[DATASIZE];
+  char *pbuf, *key, *p;
+  struct cdb diccdb;
+  int dicfd, ex, length;
   unsigned int keylen, datalen;
-
-  /* chroot to server directory */
-  if (chdir(SERVER_DIR) == -1)
-    diesys("cannot chdir() to " SERVER_DIR);
-  if (chroot(".") == -1)
-    diesys("cannot chroot()");
-  /* set uid and gid */
-  p = getenv("GID");
-  if (p) {
-    id = atoi(p);
-    if (setgroups(1, (gid_t *)&id) == -1)
-      diesys("cannot setgroups()");
-    if (setgid(id) == -1)
-      diesys("cannot setgid()");
-    }
-  p = getenv("UID");
-  if (p) {
-    id = atoi(p);
-    if (setuid(id) == -1)
-      diesys("cannot setuid()");
-    }
 
   /* open dictionary cdb file */
   if ((dicfd = open(JISHO_FILE, O_RDONLY, S_IRUSR)) < 0) {
