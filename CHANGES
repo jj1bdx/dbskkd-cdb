@@ -1,3 +1,14 @@
+20090124
+	dropped supporting server request '3'
+	with actual hostname or IP address
+	(the current syntax will be broken anyway
+	 if IPv6 should be supported)
+	since NO CLIENT uses this information for
+	authentication or anything meaningful
+	except for showing the information to the user
+	when optionally requested, so the answer to
+	the request is replaced by a fixed string
+	defined in the DUMMYHOSTNAME macro
 20090118
 	version: 1.99-expr.
 		strictly EXPERIMENTAL, NOT a release

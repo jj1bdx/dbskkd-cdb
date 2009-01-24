@@ -1,7 +1,7 @@
 dbskkd-cdb Release Notes in Japanese
 for version post dbskkd-cdb-1.99expr
 by Kenji Rikitake <kenji.rikitake@acm.org>
-last updated 18-JAN-2009
+last updated 24-JAN-2009
 
 注意: 当分の間 trunk で作業します．
 日本語が変なのは，いずれ直します．_o_
@@ -26,6 +26,12 @@ chroot, setuid, setgid をやめた．
 tinycdb にリンクするように変更
 FreeBSD でも主な Linux distro でも tinycdb-0.76 の cdb.h は別途入手可
 (FreeBSD databases/tinycdb, Debian libcdb-dev package)
+
+hostname/IPアドレスを返すクライアントからの要求('3')は，
+変換の用途にはまったく使われていないことを確認
+(情報表示用の用途のみ)
+よってこの要求に対する返答は固定文字列で返すようにした．
+これでTCPLOCALHOST/TCPLOCALIPをgetenv()しなくて済む．
 
 ●dbskkd-cdbの概要
 
