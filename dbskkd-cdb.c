@@ -41,8 +41,9 @@
 #define STDIN (fileno(stdin))
 #define STDOUT (fileno(stdout))
 
-/* must be terminated with space */
+/* these strings must be terminated with space */
 #define VERSION "dbskkd-cdb-1.99expr-20090118-0 " 
+#define DUMMYHOSTNAME "dummy.hostname.for.dbskkd-cdb.example.com:127.0.0.1: "
 
 /* diesys() originally from DJB's cdb-0.55, modified */
 void diesys(char *why)
@@ -93,29 +94,8 @@ int main(int argc, char *argv[])
         diesys("write error (version string)"); 
       break;
     case CLIENT_HOST:
-      /* use tcp-environ */
-      p = getenv("TCPLOCALHOST");
-      if (p) {
-        if (write(STDOUT, p, strlen(p)) < 0)
-          diesys("write error (TCPLOCALHOST)"); 
-	}
-      else {
-	if (write(STDOUT, "UNKNOWN", 7) < 0)
-	  diesys("write error (UNKNOWN TCPLOCALHOST)");
-	}
-      if (write(STDOUT, ":", 1) < 0)
-	diesys("write error (colon after TCPLOCALHOST)");
-      p = getenv("TCPLOCALIP");
-      if (p) {
-        if (write(STDOUT, p, strlen(p)) < 0)
-          diesys("write error (TCPLOCALIP)"); 
-	}
-      else {
-	if (write(STDOUT, "UNKNOWNIP", 7) < 0)
-	  diesys("write error (UNKNOWN TCPLOCALIP)");
-	}
-      if (write(STDOUT, ": ", 2) < 0)
-	diesys("write error (colon and space after TCPLOCALIP)");
+      if (write(STDOUT, DUMMYHOSTNAME, sizeof(DUMMYHOSTNAME) - 1) < 0)
+          diesys("write error (dummyhostname string)"); 
       break;
     case CLIENT_REQUEST:
       /* get size of key */
