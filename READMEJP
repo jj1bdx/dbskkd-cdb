@@ -1,7 +1,7 @@
 dbskkd-cdb Release Notes in Japanese
 for version post dbskkd-cdb-1.99expr
 by Kenji Rikitake <kenji.rikitake@acm.org>
-last updated 24-JAN-2009
+last updated 25-JAN-2009
 
 $BCm0U(B: $BEvJ,$N4V(B trunk $B$G:n6H$7$^$9!%(B
 $BF|K\8l$,JQ$J$N$O!$$$$:$lD>$7$^$9!%(B_o_
@@ -32,6 +32,12 @@ hostname/IP$B%"%I%l%9$rJV$9%/%i%$%"%s%H$+$i$NMW5a(B('3')$B$O!$(B
 ($B>pJsI=<(MQ$NMQES$N$_(B)
 $B$h$C$F$3$NMW5a$KBP$9$kJVEz$O8GDjJ8;zNs$GJV$9$h$&$K$7$?!%(B
 $B$3$l$G(BTCPLOCALHOST/TCPLOCALIP$B$r(Bgetenv()$B$7$J$/$F:Q$`!%(B
+
+inetd$B$O(Bstderr$B$b(Bstdout$BF1MM$K07$C$F$7$^$&$?$a!$(B
+stderr$B$G%a%C%;!<%8$rJV$90UL#$,$J$$!%(B
+syslog$B$G$o$6$o$6%a%C%;!<%8$r=P$9$[$I$NM}M3$b$J$$$N$G!$(B
+stderr$B$X=PNO$9$k%3!<%I$O$9$Y$F(B VERBOSE_MSG $B$H$$$&(B
+$B%3%s%Q%$%k;~%U%i%0$rM-8z$K$7$?;~$N$_AH$_9~$^$l$k$h$&$K$7$?!%(B
 
 $B!|(Bdbskkd-cdb$B$N35MW(B
 
@@ -83,7 +89,12 @@ dbskkd-cdb-1.01 $B$*$h$S(B 1.71dev $B$N(B cdb $B%U%!%$%k$O$=$N$^$^F0:n$9$k!
 
 $B!|%$%s%9%H!<%k$N:]$NCm0U(B
 
-(TBD)
+$B$3$N%W%m%0%i%`@lMQ$NHsFC8"%f!<%6$r@_Dj$7!$(B
+$B$=$N%f!<%6$N8"8B$G5/F0$9$k$h$&$K$9$k$3$H!%(B
+
+example-inetd.txt $B$K(B inetd.conf $B$X$NDI2CFbMFNc!$(B
+example-daemontools.txt $B$K(B daemontools $B$r;H$C$?>l9g$N(B
+run $B%U%!%$%k$X$N5-=RNc$r<($7$F$$$k!%(B
 
 $B!|Cm0U!&8B3&!&2~NI$NM>CO(B
 
@@ -93,15 +104,8 @@ dbskkd-cdb$B$O0lC65/F0$5$l$k$H=*N;$9$k$^$G$O(Bcdb$B<-=q%U%!%$%k$r%*!<%W%s$7$?
 $B$7$F$O$J$i$J$$!%(Bcdb$B<-=q%U%!%$%k$r:n$jD>$9>l9g$O!$(Bdbskkd-cdb$B$r5/F0$7$F$$(B
 $B$J$$$3$H$r3NG'$9$kI,MW$,$"$k!%(B
 
-$B%(%i!<%a%C%;!<%8$O(Bstderr$B$+$i(Bmultilog$B$G5-O?$9$k$h$&$K$7$F$"$k!%$^$@%(%i!<(B
-$B%A%'%C%/$O4E$$2DG=@-$,$"$k!%(B
-
-$B8D?ME*$K$O(BSERVER_NOT_FOUND$B$N;~$N5sF0$OL5BL$@$H;W$&$,!$$3$l$O(Bskkinput$BB&$N(B
-$BJQ99$,I,MW$G$A$g$C$HFq$7$=$&$J$N$G!$$3$A$i$GBP1~$7$F$*$/$3$H$K$7$?!%(B
-skkinput$BB&$,!$(BSERVER_NOT_FOUND$B$N;~!$(B"4"$B$@$1$,JV$C$F$-$F$bBg>fIW$J$h$&$K(B
-$B$9$l$P$3$NLdBj$O2r7h$9$k$,!$$3$NLdBj$K$D$$$F$O3F<o%5!<%P$N3+H/<T$N0U8+$r(B
-$BD4@0$7$F;EMM$r3NDj$9$k$3$H$,I,MW$@$m$&!%$3$N%j%j!<%9%N!<%H$N<9I.;~E@$G$O(B
-$B8=9T$N;EMM$,479T$H$7$F3NDj$7$F$$$k!%(B
+$B8D?ME*$K$O(BSERVER_NOT_FOUND$B$N;~$N5sF0$OL5BL$@$H;W$&$,!$47=,$H$7$FBP1~$7$F(B
+$B$$$k!%(B
 
 $B!|G[I[>r7o(B
 
@@ -139,8 +143,7 @@ skkinput$B$N3+H/<T(B $B:eK\(B $B?r;a$*$h$S(Bcontributor$B$N3'MM!$(B
 cdb$BB>$N:n<T$G$"$k(B Daniel J. Bernstein$B;a$K:GBg8B$N;?<-$rAw$k$H6&$K!$(B
 DJB tools$B%0%k!<%W$NA0Ln(B $BG/5*;a$[$+;22C<T$N3'MM$K46<U$7$^$9!%(B
 
-$B$^$?!$0J2<$NJ}!9$K$O(B 1.71dev $B$^$G$N(B
-$B3+H/$K$"$?$C$FM-MQ$J=u8@$r$$$?$@$-$^$7$?!%(B
+$B$^$?!$0J2<$NJ}!9$K$O3+H/$K$"$?$C$FM-MQ$J=u8@$r$$$?$@$-$^$7$?!%(B
 $B$3$3$K46<U$N0U$rI=$7$^$9(B($B7I>NN,(B)$B!%(B
 
 $BK\ED(B $B9/90!$Cf86(B $BAa@8!$5FCO(B $B9b9-!$$^$D$b$H$R$G$*!$8q9>(B $B1QN4!$@nB<(B $B>0@8!$(B
