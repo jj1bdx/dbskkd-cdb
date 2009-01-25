@@ -11,6 +11,8 @@
 	NOTE: dictionary name is changed to JISYO_FILE
 	      (previously JISHO -> now *JISYO*)
 	      to match the SKK-JISYO.* filenames
+	20090125-2 dbskkd-cdb.c performs macro replacement
+		diesys(string) -> exit(1)
 20090124
 	dropped supporting server request '3'
 	with actual hostname or IP address

@@ -47,7 +47,7 @@
 #define STDOUT (fileno(stdout))
 
 /* these strings must be terminated with space */
-#define VERSION "dbskkd-cdb-1.99expr-20090125-1 " 
+#define VERSION "dbskkd-cdb-1.99expr-20090125-2 " 
 #define DUMMYHOSTNAME "novalue: "
 
 /*
@@ -56,18 +56,24 @@
  */
 /* #undef VERBOSE_MSG */
 
+/*
+ * diesys() is replaced by exit(1)
+ * when VERBOSE_MSG is not defined
+ */
+#ifdef VERBOSE_MSG
 /* 
  * diesys() originally from DJB's cdb-0.55
  * modified by Kenji Rikitake
  */
 void diesys(char *why)
 { 
-#ifdef VERBOSE_MSG
   fprintf(stderr, "dbskkd-cdb: pid %d ", getpid());
   perror(why); 
-#endif /* VERBOSE_MSG */
   exit(1); 
 }
+#else /* !VERBOSE_MSG */
+#define diesys(dummy_string) exit(1)
+#endif /* VERBOSE_MSG */
 
 /* main program */
 
