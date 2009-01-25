@@ -39,6 +39,9 @@ syslog$B$G$o$6$o$6%a%C%;!<%8$r=P$9$[$I$NM}M3$b$J$$$N$G!$(B
 stderr$B$X=PNO$9$k%3!<%I$O$9$Y$F(B VERBOSE_MSG $B$H$$$&(B
 $B%3%s%Q%$%k;~%U%i%0$rM-8z$K$7$?;~$N$_AH$_9~$^$l$k$h$&$K$7$?!%(B
 
+$BL>A0$N@09g@-$r<h$k$?$a$K(B
+JISHO_FILE -> JISYO_FILE $B$H$7$F$$$k!%(B
+
 $B!|(Bdbskkd-cdb$B$N35MW(B
 
 dbskkd-cdb$B$O!$(Bskkserv$B$HF1MM$N5!G=$rDs6!$9$k(BSKK$BMQ$N6&DL<-=q%5!<%P!<$G$"$k!%(B
@@ -77,8 +80,10 @@ dbskkd-cdb-1.01 $B$*$h$S(B 1.71dev $B$N(B cdb $B%U%!%$%k$O$=$N$^$^F0:n$9$k!
    $B%G%U%)%k%H$O(B /usr/local/share/skk/SKK-JISYO.L$B$r;XDj$7$F$$$k!%(B
    $B$^$?!$%G%U%)%k%H$G$O%+%l%s%H%G%#%l%/%H%j$K(BSKK-JISYO.L.cdb$B$,:n$i$l$k!%(B
    $B$3$N<-=q%U%!%$%k$O%$%s%9%H!<%k$N:](B dbskkd-cdb.c $BCf$N(B
-   JISHO_FILE $B$G;XDj$9$k%G%#%l%/%H%j$KCV$/!%(B
-   JISHO_FILE $B$N%G%U%)%k%HCM$O(B /usr/local/share/skk/SKK-JISYO.L.cdb $B$G$"$k!%(B
+   JISYO_FILE $B$G;XDj$9$k%G%#%l%/%H%j$KCV$/!%(B
+   JISYO_FILE $B$N%G%U%)%k%HCM$O(B /usr/local/share/skk/SKK-JISYO.L.cdb $B$G$"$k!%(B
+   $BCm0U(B: 1.x$B$G$O$3$N%^%/%m$O(B "JISHO_FILE" $B$G$"$C$?$,!$(B
+   $B<-=q%U%!%$%k$H$NL>A0$N@09g@-$r<h$k$?$a$K$3$N$h$&$K$7$?!%(B
 
 2. dbskkd-cdb$B$r%3%s%Q%$%k$9$k$?$a(Bmake$B$9$k!%(B
    $B$3$N:](B tinycdb $BCf$N(B cdb.h $B$,I,MW$H$J$k!%(B
@@ -91,6 +96,7 @@ dbskkd-cdb-1.01 $B$*$h$S(B 1.71dev $B$N(B cdb $B%U%!%$%k$O$=$N$^$^F0:n$9$k!
 
 $B$3$N%W%m%0%i%`@lMQ$NHsFC8"%f!<%6$r@_Dj$7!$(B
 $B$=$N%f!<%6$N8"8B$G5/F0$9$k$h$&$K$9$k$3$H!%(B
+*$B@dBP$K(Broot$B8"8B$G5/F0$7$J$$$3$H(B*
 
 example-inetd.txt $B$K(B inetd.conf $B$X$NDI2CFbMFNc!$(B
 example-daemontools.txt $B$K(B daemontools $B$r;H$C$?>l9g$N(B
