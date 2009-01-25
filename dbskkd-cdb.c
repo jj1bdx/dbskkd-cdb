@@ -22,10 +22,12 @@
 /* 
  * dbskkd dictionary file 
  * default value: FreeBSD port japanese/ddskk
+ * note: the macro was JISHO_FILE in 1.x
+ *       spelling changed from JISHO to JISYO
  */
-#ifndef JISHO_FILE
-#define JISHO_FILE	"/usr/local/share/skk/SKK-JISYO.L.cdb"
-#endif /* JISHO_FILE */
+#ifndef JISYO_FILE
+#define JISYO_FILE	"/usr/local/share/skk/SKK-JISYO.L.cdb"
+#endif /* JISYO_FILE */
 
 #define	BUFSIZE		(1024)	/* max size of a request */
 #define DATASIZE	(4096)	/* max size of a result */
@@ -42,8 +44,8 @@
 #define STDOUT (fileno(stdout))
 
 /* these strings must be terminated with space */
-#define VERSION "dbskkd-cdb-1.99expr-20090118-0 " 
-#define DUMMYHOSTNAME "dummy.hostname.for.dbskkd-cdb.example.com:127.0.0.1: "
+#define VERSION "dbskkd-cdb-1.99expr-20090125-0 " 
+#define DUMMYHOSTNAME "novalue: "
 
 /* diesys() originally from DJB's cdb-0.55, modified */
 void diesys(char *why)
@@ -66,16 +68,19 @@ int main(int argc, char *argv[])
   unsigned int keylen, datalen;
 
   /* open dictionary cdb file */
-  if ((dicfd = open(JISHO_FILE, O_RDONLY, S_IRUSR)) < 0) {
-    diesys("cannot open() the dictionary file " JISHO_FILE);
+  if ((dicfd = open(JISYO_FILE, O_RDONLY, S_IRUSR)) < 0) {
+    diesys("cannot open() the dictionary file " JISYO_FILE);
     /* NOTREACHED */
   }
   cdb_init(&diccdb, dicfd);
 
   /* command loop */
+  /* set ex to non-zero for exiting */
   ex = 0;
   while (!ex) {
+
     length = read(STDIN, &combuf[0], BUFSIZE - 1);
+
     if (length < 0)
       diesys("read error from stdin");
     else if (length == 0) {
@@ -83,20 +88,26 @@ int main(int argc, char *argv[])
       ex = 1;
       break;
     }
+
+    /* parse request code */
     switch (combuf[0]) {
+
     case CLIENT_END:
       fprintf(stderr, 
 	      "dbskkd-cdb: pid %d end of conversion requested\n", getpid());
       ex = 1;
       break;
+
     case CLIENT_VERSION:
       if (write(STDOUT, VERSION, sizeof(VERSION) - 1) < 0)
         diesys("write error (version string)"); 
       break;
+
     case CLIENT_HOST:
       if (write(STDOUT, DUMMYHOSTNAME, sizeof(DUMMYHOSTNAME) - 1) < 0)
           diesys("write error (dummyhostname string)"); 
       break;
+
     case CLIENT_REQUEST:
       /* get size of key */
       key = &combuf[1];
@@ -106,12 +117,17 @@ int main(int argc, char *argv[])
       keylen = pbuf - &combuf[1];
       if (keylen <= 0)
         diesys("invalid keysize");
+
+      /* lookup the cdb database */
       switch (cdb_find(&diccdb, key, keylen)) {
-      case -1:
+
+      case -1: /* error */
         diesys("fatal error on cdb_find()");
+
       case 1: /* found */
         if ((datalen = cdb_datalen(&diccdb)) >= DATASIZE - 2)
   	  diesys("searched entry too long");
+
 	/* generate the answer string */
 	p = data;
 	*p++ = SERVER_FOUND;
@@ -119,29 +135,36 @@ int main(int argc, char *argv[])
   	  diesys("read error (seeked dictionary data)");
         p += datalen;
         *p = '\n';
+
         /* sending found code and the result data string with LF */
         if (write(STDOUT, data, datalen + 2) < 0)
   	  diesys("write error (converted data)");
         break;
+
       case 0: /* NOT found */
         /* generate the answer string */
         combuf[0] = SERVER_NOT_FOUND;
         *pbuf = '\n';
+
         /* sending error code and the key string with LF */
         /* this action is required by skkinput */
         if (write(STDOUT, combuf, keylen + 2) < 0)
   	  diesys("write error (NOT_FOUND message)");
         break;
-      default: /* unknown value */ 
+
+      default: /* unknown cdb return value */ 
         diesys("unknown return value from cdb_seek()");
       }
       break;
-    default:
+      /* end CLIENT_REQUEST switch statement*/
+
+    /* unknown request code */
+    default: 
       fprintf(stderr, 
 	      "dbskkd-cdb: pid %d unknown client request code = %d\n",
 	       getpid(), combuf[0]);
       exit(1);
-    }
+    } /* end request code parsing */
   }
 
   /* close dictionary db file */
