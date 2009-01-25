@@ -4,6 +4,9 @@
  * with Daniel J. Bernstein's cdb database
  *
  * Copyright (c) 1998-2009 by Kenji Rikitake. All rights reserved.
+ * This code is distributed under
+ * Creative Commons BSD License.
+ * http://creativecommons.org/licenses/BSD/
  * See LICENSE of the distribution kit for the redistribution conditions.
  */
 
@@ -44,20 +47,29 @@
 #define STDOUT (fileno(stdout))
 
 /* these strings must be terminated with space */
-#define VERSION "dbskkd-cdb-1.99expr-20090125-0 " 
+#define VERSION "dbskkd-cdb-1.99expr-20090125-1 " 
 #define DUMMYHOSTNAME "novalue: "
 
-/* diesys() originally from DJB's cdb-0.55, modified */
+/*
+ * define VERBOSE_MSG 
+ * if explicit error messages are needed
+ */
+/* #undef VERBOSE_MSG */
+
+/* 
+ * diesys() originally from DJB's cdb-0.55
+ * modified by Kenji Rikitake
+ */
 void diesys(char *why)
 { 
+#ifdef VERBOSE_MSG
   fprintf(stderr, "dbskkd-cdb: pid %d ", getpid());
   perror(why); 
+#endif /* VERBOSE_MSG */
   exit(1); 
 }
 
-/*
- * main program
- */
+/* main program */
 
 int main(int argc, char *argv[])
 {
@@ -84,7 +96,9 @@ int main(int argc, char *argv[])
     if (length < 0)
       diesys("read error from stdin");
     else if (length == 0) {
+#ifdef VERBOSE_MSG
       fprintf(stderr, "dbskkd-cdb: pid %d end of file detected\n", getpid());
+#endif /* VERBOSE_MSG */
       ex = 1;
       break;
     }
@@ -93,8 +107,10 @@ int main(int argc, char *argv[])
     switch (combuf[0]) {
 
     case CLIENT_END:
+#ifdef VERBOSE_MSG
       fprintf(stderr, 
 	      "dbskkd-cdb: pid %d end of conversion requested\n", getpid());
+#endif /* VERBOSE_MSG */
       ex = 1;
       break;
 
@@ -160,9 +176,11 @@ int main(int argc, char *argv[])
 
     /* unknown request code */
     default: 
+#ifdef VERBOSE_MSG
       fprintf(stderr, 
 	      "dbskkd-cdb: pid %d unknown client request code = %d\n",
 	       getpid(), combuf[0]);
+#endif /* VERBOSE_MSG */
       exit(1);
     } /* end request code parsing */
   }

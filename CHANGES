@@ -1,3 +1,16 @@
+20090125
+	inetd does not handle stderr well,
+	so explicit error messages before crashing
+	are all commented out
+	(the fast-fail principle applied)
+	setting VERBOSE_MSG as a compile flag
+	will reenable the messages
+	(still useful when used with ucspi-tcp)
+	More comments on the code inserted
+	DUMMYHOSTNAME made shorter
+	NOTE: dictionary name is changed to JISYO_FILE
+	      (previously JISHO -> now *JISYO*)
+	      to match the SKK-JISYO.* filenames
 20090124
 	dropped supporting server request '3'
 	with actual hostname or IP address
