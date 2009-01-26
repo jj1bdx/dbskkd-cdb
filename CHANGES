@@ -1,3 +1,6 @@
+20090126
+	Removed ambiguity from LICENSE
+	Attached LICENSE content in dbskkd-cdb.c
 20090125
 	inetd does not handle stderr well,
 	so explicit error messages before crashing
