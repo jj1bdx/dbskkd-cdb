@@ -1,7 +1,7 @@
 dbskkd-cdb Release Notes in Japanese
 for version post dbskkd-cdb-1.99expr
 by Kenji Rikitake <kenji.rikitake@acm.org>
-last updated 25-JAN-2009
+last updated 27-JAN-2009
 
 注意: 当分の間 trunk で作業します．
 日本語が変なのは，いずれ直します．_o_
@@ -41,6 +41,8 @@ stderrへ出力するコードはすべて VERBOSE_MSG という
 
 名前の整合性を取るために
 JISHO_FILE -> JISYO_FILE としている．
+
+makeskkcdb.sh で tinycdb の cdb を使うようにした．
 
 ●dbskkd-cdbの概要
 
