@@ -1,3 +1,5 @@
+20090129
+	Made CHANGES in reverse-chlonogical order
 20090127
 	makeskkcdb.sh now uses tinycdb's cdb
 	instead of djb's cdbmake
@@ -51,12 +53,12 @@
 	cleanupcdb.sh added
 	gcc-4.2.1 signedness warning cleared
 		by quitting using unsigned chars
+20000325
+	Japanese README complete
+	version: dbskkd-cdb-1.70dev.
 20000312
 	Changes from 1.01 to 1.70dev:
 	* chroot()s to the SERVER_DIR
 	* search() included into the main()'s command loop
 	* reports pid to stderr
 	* now uses cdb-0.75 source files instead of cdb-0.55's
-20000325
-	Japanese README complete
-	version: dbskkd-cdb-1.70dev.
