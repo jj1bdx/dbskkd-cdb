@@ -1,20 +1,17 @@
 dbskkd-cdb Release Notes in Japanese
 for version post dbskkd-cdb-1.99expr
 by Kenji Rikitake <kenji.rikitake@acm.org>
-last updated 27-JAN-2009
+last updated 29-JAN-2009
 
-注意: 当分の間 trunk で作業します．
-日本語が変なのは，いずれ直します．_o_
-またテスト中のコードです．
-セキュリティ上の問題等は保証しません．
+またテスト中のコードです．セキュリティ上の問題等は保証しません．
 
-●1.71devからの修正箇所のメモ
+●1.71dev からの修正箇所のメモ
 (see CHANGES for details)
 
-木下達也さん(Debian maintainer)からのパッチを適用
+木下達也さん (Debian maintainer) からのパッチを適用
 
-以下の Twitter @konosuke 氏からの指摘により，BSD make依存の部分をGNU
-makeでも通るようにした
+以下の Twitter @konosuke 氏からの指摘により， BSD make 依存の部分を GNU
+make でも通るようにした
 
 http://twitter.com/konosuke/status/1094925767
 
@@ -27,16 +24,16 @@ tinycdb にリンクするように変更
 FreeBSD でも主な Linux distro でも tinycdb-0.76 の cdb.h は別途入手可
 (FreeBSD databases/tinycdb, Debian libcdb-dev package)
 
-hostname/IPアドレスを返すクライアントからの要求('3')は，
+hostname/IP アドレスを返すクライアントからの要求 ('3') は，
 変換の用途にはまったく使われていないことを確認
 (情報表示用の用途のみ)
 よってこの要求に対する返答は固定文字列で返すようにした．
-これでTCPLOCALHOST/TCPLOCALIPをgetenv()しなくて済む．
+これで TCPLOCALHOST/TCPLOCALIP を getenv() しなくて済む．
 
-inetdはstderrもstdout同様に扱ってしまうため，
-stderrでメッセージを返す意味がない．
-syslogでわざわざメッセージを出すほどの理由もないので，
-stderrへ出力するコードはすべて VERBOSE_MSG という
+inetd は stderr も stdout 同様に扱ってしまうため，
+stderr でメッセージを返す意味がない．
+syslog でわざわざメッセージを出すほどの理由もないので，
+stderr へ出力するコードはすべて VERBOSE_MSG という
 コンパイル時フラグを有効にした時のみ組み込まれるようにした．
 
 名前の整合性を取るために
@@ -44,61 +41,60 @@ JISHO_FILE -> JISYO_FILE としている．
 
 makeskkcdb.sh で tinycdb の cdb を使うようにした．
 
-●dbskkd-cdbの概要
+● dbskkd-cdb の概要
 
-dbskkd-cdbは，skkservと同様の機能を提供するSKK用の共通辞書サーバーである．
-辞書検索に際してはD. J. Bernstein(以下DJB)氏のcdbを使ってデータベース化
-し高速にしている．本サーバーのアイディアは同種のツールpskkservをヒントに
-している．cdbの動作には次のURLを参照すること．
+dbskkd-cdb は， skkserv と同様の機能を提供する SKK 用の共通辞書サーバーで
+ある．辞書は D. J. Bernstein の cdb を使ってデータベース化し，検索を高速
+化している．本サーバーは同種のツール pskkserv を基にしている．
+
+cdb
 http://cr.yp.to/cdb.html
 
-dbskkd-cdb は ucspi-tcp の tcpserver が提供する情報を使っている．
-これについては以下のURLを参照すること．
-http://cr.yp.to/ucspi-tcp.html
+本プログラムは cdb 互換ライブラリである tinycdb へのリンクを前提としている．
 
-本プログラムはcdb互換ライブラリであるtinycdbへのリンクを前提としている．
-tinycdbの詳細については以下のURLを参照すること．
+tinycdb
 http://www.corpit.ru/mjt/tinycdb.html
 
-●dbskkd-cdbの動作環境
+● dbskkd-cdb の動作環境
 
-dbskkd-cdbは，現時点では
+dbskkd-cdb は，現時点では
 
 	FreeBSD 7.1-RELEASE
 
-にて基本的動作を確認している．他のOSでも大きな変更なしに動作すると思われ
-る．ただし動作の確認は動作の保証を意味しない．また動作条件の細かな変化に
-よる誤動作については一切保証しない．
+にて基本的動作を確認している．
 
 FreeBSD の port および debian の package については動作を確認している．
-詳細はそれぞれの maintainer に問い合わせていただきたい．
+
+他の OS でも大きな変更なしに動作すると思われる．ただし動作の確認は動作の
+保証を意味しない．また動作条件の細かな変化による誤動作については一切保証
+しない．
 
 dbskkd-cdb-1.01 および 1.71dev の cdb ファイルはそのまま動作する．
 
 ●インストール前の注意
 
-1. 添付のmakeskkcdb.shを実行する．このスクリプトでは
-   辞書ファイルはskktocdbm.shの標準入力に与えるようになっている．
-   デフォルトは /usr/local/share/skk/SKK-JISYO.Lを指定している．
-   また，デフォルトではカレントディレクトリにSKK-JISYO.L.cdbが作られる．
+1. 添付の makeskkcdb.sh を実行する．このスクリプトでは
+   辞書ファイルは skktocdbm.sh の標準入力に与える．
+   ファイル名の既定値は /usr/local/share/skk/SKK-JISYO.L である．
+   実行するとカレントディレクトリに SKK-JISYO.L.cdb が作られる．
    この辞書ファイルはインストールの際 dbskkd-cdb.c 中の
    JISYO_FILE で指定するディレクトリに置く．
-   JISYO_FILE のデフォルト値は /usr/local/share/skk/SKK-JISYO.L.cdb である．
-   注意: 1.xではこのマクロは "JISHO_FILE" であったが，
+   JISYO_FILE の規定値は /usr/local/share/skk/SKK-JISYO.L.cdb である．
+   注意: 1.x ではこのマクロは "JISHO_FILE" と定義していたが，
    辞書ファイルとの名前の整合性を取るためにこのようにした．
 
-2. dbskkd-cdbをコンパイルするためmakeする．
+2. 実行ファイル dbskkd-cdb をコンパイルするため make する．
    この際 tinycdb 中の cdb.h が必要となる．
    また tinycdb 中の libcdb.a をリンクする．
 
-3. make install で dbskkd-cdb を実行ディレクトリに転送する．
-   デフォルト値は /usr/local/libexec へ転送する．
+3. make install で dbskkd-cdb を実行ディレクトリにコピーする．
+   既定値では /usr/local/libexec へコピーする．
 
 ●インストールの際の注意
 
 このプログラム専用の非特権ユーザを設定し，
 そのユーザの権限で起動するようにすること．
-*絶対にroot権限で起動しないこと*
+* root 権限で起動してはならない．*
 
 example-inetd.txt に inetd.conf への追加内容例，
 example-daemontools.txt に daemontools を使った場合の
@@ -106,14 +102,14 @@ run ファイルへの記述例を示している．
 
 ●注意・限界・改良の余地
 
-dbskkd-cdbは一旦起動されると終了するまではcdb辞書ファイルをオープンした
-ままになっている．cdbではオープンされたファイルの中身は変わらないことを
-仮定しているため，dbskkd-cdbを起動した状態でcdb辞書ファイルの内容を変更
-してはならない．cdb辞書ファイルを作り直す場合は，dbskkd-cdbを起動してい
-ないことを確認する必要がある．
+dbskkd-cdb は一旦起動されると終了するまではcdb辞書ファイルをオープンした
+ままになっている． cdb ではオープンされたファイルの中身は変わらないことを
+仮定しているため， dbskkd-cdb を起動した状態で cdb 辞書ファイルの内容を変
+更してはならない． cdb 辞書ファイルを作り直す場合は， dbskkd-cdb を起動し
+ていないことを確認する必要がある．
 
-個人的にはSERVER_NOT_FOUNDの時の挙動は無駄だと思うが，慣習として対応して
-いる．
+個人的には SERVER_NOT_FOUND の時の挙動は無駄だと思うが，慣習として対応し
+ている．
 
 ●配布条件
 
@@ -126,7 +122,7 @@ Simplified BSD License
 詳しい条件については ファイル LICENSE の内容を
 参照してください．
 
-●意見交換など
+●バグレポート，意見交換など
 
 本プログラムに関する意見交換は
 情報共有のため
@@ -137,21 +133,20 @@ http://code.google.com/p/dbskkd-cdb/
 
 ●謝辞
 
-本プログラムの開発にあたっては，
-skkの開発者 佐藤 雅彦氏，中島 幹夫氏およびcontributorの皆様，
-skkservの開発者 亀山 幸義氏およびcontributorの皆様，
-pskkservの開発者 佐藤 正章氏，中島 幹夫氏およびcontributorの皆様，
-skkinputの開発者 阪本 崇氏およびcontributorの皆様，
-そしてskkの発展に貢献した利用者の皆様に敬意と感謝の意を表します．
+cdb の開発者 Daniel J. Bernstein および
+TinyCDB の開発者 Michael Tokarev の両氏に
+最大限の感謝と賛辞を贈ります．
 
-また，cdb の利用に際しては，
-cdb他の作者である Daniel J. Bernstein氏に最大限の賛辞を送ると共に，
-DJB toolsグループの前野 年紀氏ほか参加者の皆様に感謝します．
+また，本プログラムの開発にあたって，以下の方々，
+ここに列挙していない contributor の皆様，
+ならびに SKK の利用を通じて改良点などをご教示くださった皆様に
+感謝致します．
 
-また，以下の方々には開発にあたって有用な助言をいただきました．
-ここに感謝の意を表します(敬称略)．
+(敬称略)
 
-本田 康弘，中原 早生，菊地 高広，まつもとひでお，鯉江 英隆，川村 尚生，
-木原 英人，稲員 力士，松下 誠，山縣 敦，木下 達也．
+佐藤 雅彦，中島 幹夫，亀山 幸義，佐藤 正章，阪本 崇，鵜飼 文敏，
+前野 年紀，本田 康弘，中原 早生，菊地 高広，まつもとひでお，
+鯉江 英隆，川村 尚生，木原 英人，稲員 力士，松下 誠，山縣 敦，
+木下 達也，中居 良介
 
 [End of memorandum]
