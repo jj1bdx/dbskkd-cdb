@@ -1,7 +1,7 @@
 SKK server-client protocol for dbskkd-cdb
 (unofficial)
 by Kenji Rikitake
-last update 31-JUN-2009
+last update 31-JAN-2009
 
 Note:
     this document is for dbskkd-cdb only
@@ -28,7 +28,8 @@ CLIENT_REQUEST:
     answer if found: '1' + ('/' + candidate) * number_of_candidates +
                      '/' + LF
     answer if not found: '4' + dictionary_key + space + LF
-    note: character code of dictionary_key and candidate are
+    note: dictionary_key and candidates are all variable-length strings
+    	  character code of dictionary_key and candidate are
           in EUC-JP
 
 CLIENT_VERSION:
