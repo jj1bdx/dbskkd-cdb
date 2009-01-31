@@ -1,0 +1,50 @@
+SKK server-client protocol for dbskkd-cdb
+(unofficial)
+by Kenji Rikitake
+last update 31-JUN-2009
+
+Note:
+    this document is for dbskkd-cdb only
+
+    this document does not describe
+    sub-protocols for the server completion
+    which is unsupported on dbskkd-cdb
+
+Notation:
+    '0' is ASCII 0x30
+    LF is ASCII 0x0a
+    space is ASCII 0x20
+    "abc" is ASCII/EUC-JP string
+
+Size limit:
+    maximum request size: 1024 bytes
+    maximum result size: 4096 bytes
+
+CLIENT_END:
+    request to server: '0' + space + LF
+
+CLIENT_REQUEST:
+    request to server: '1' + dictionary_key + space + LF
+    answer if found: '1' + ('/' + candidate) * number_of_candidates +
+                     '/' + LF
+    answer if not found: '4' + dictionary_key + space + LF
+    note: character code of dictionary_key and candidate are
+          in EUC-JP
+
+CLIENT_VERSION:
+    request to server: '2' + space + LF
+    answer: string including server version + space
+            e.g. "dbskkd-cdb-2.00 "
+    note: no known client parses this string 
+
+CLIENT_HOST:
+    request to server: '3' + space + LF
+    answer: string including host information + space
+            e.g. "localhost:127.0.0.1: "
+    note: no known client parses this string 
+
+Shutting down:
+    The server disconnects the link and shuts down
+    when received an unknown request
+
+[end of document]
