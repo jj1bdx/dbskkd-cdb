@@ -1,3 +1,8 @@
+20090206
+	version: 2.00.
+	READMEJP encoding changed to euc-jp
+	skk-server-protocol.txt revised
+	README added as a brief English document
 20090131
 	skk-server-protocol.txt added
 	READMEJP revised and simplified

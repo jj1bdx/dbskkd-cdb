@@ -1,7 +1,7 @@
 SKK server-client protocol for dbskkd-cdb
 (unofficial)
 by Kenji Rikitake
-last update 31-JAN-2009
+last update 6-FEB-2009
 
 Note:
     this document is for dbskkd-cdb only
@@ -37,15 +37,19 @@ CLIENT_VERSION:
     answer: string including server version + space
             e.g. "dbskkd-cdb-2.00 "
     note: no known client parses this string 
+    on dbskkd-cdb: returns version string
 
 CLIENT_HOST:
     request to server: '3' + space + LF
     answer: string including host information + space
             e.g. "localhost:127.0.0.1: "
     note: no known client parses this string 
+    on dbskkd-cdb: returns dummy string "novalue: "
 
 Shutting down:
     The server disconnects the link and shuts down
     when received an unknown request
+    on dbskkd-cdb: an internal error will cause shutdown
+                   (exit(1))
 
 [end of document]

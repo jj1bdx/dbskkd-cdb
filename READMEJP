@@ -1,152 +1,158 @@
+# -*- coding: euc-jp-unix -*-
 dbskkd-cdb Release Notes in Japanese
-for version post dbskkd-cdb-1.99expr
+for version dbskkd-cdb-2.00
 by Kenji Rikitake <kenji.rikitake@acm.org>
-last updated 29-JAN-2009
+last updated 6-FEB-2009
 
-$B$^$?%F%9%HCf$N%3!<%I$G$9!%%;%-%e%j%F%#>e$NLdBjEy$OJ]>Z$7$^$;$s!%(B
+¡ü dbskkd-cdb ¤Î³µÍ×
 
-$B!|(B1.71dev $B$+$i$N=$@52U=j$N%a%b(B
-(see CHANGES for details)
-
-$BLZ2<C#Li$5$s(B (Debian maintainer) $B$+$i$N%Q%C%A$rE,MQ(B
-
-$B0J2<$N(B Twitter @konosuke $B;a$+$i$N;XE&$K$h$j!$(B BSD make $B0MB8$NItJ,$r(B GNU
-make $B$G$bDL$k$h$&$K$7$?(B
-
-http://twitter.com/konosuke/status/1094925767
-
-gcc-4.2.1 (FreeBSD 7.1-RELEASE stock cc) $B$N(B signedness $B$NLdBj$r$H$j$"$((B
-$B$:7A<0E*$K=$@5(B($B0UL#E*$K$bLdBj$O$J$$$H;W$&$,!$MW3NG'(B)
-
-chroot, setuid, setgid $B$r$d$a$?!%(B
-
-tinycdb $B$K%j%s%/$9$k$h$&$KJQ99(B
-FreeBSD $B$G$b<g$J(B Linux distro $B$G$b(B tinycdb-0.76 $B$N(B cdb.h $B$OJLESF~<j2D(B
-(FreeBSD databases/tinycdb, Debian libcdb-dev package)
-
-hostname/IP $B%"%I%l%9$rJV$9%/%i%$%"%s%H$+$i$NMW5a(B ('3') $B$O!$(B
-$BJQ49$NMQES$K$O$^$C$?$/;H$o$l$F$$$J$$$3$H$r3NG'(B
-($B>pJsI=<(MQ$NMQES$N$_(B)
-$B$h$C$F$3$NMW5a$KBP$9$kJVEz$O8GDjJ8;zNs$GJV$9$h$&$K$7$?!%(B
-$B$3$l$G(B TCPLOCALHOST/TCPLOCALIP $B$r(B getenv() $B$7$J$/$F:Q$`!%(B
-
-inetd $B$O(B stderr $B$b(B stdout $BF1MM$K07$C$F$7$^$&$?$a!$(B
-stderr $B$G%a%C%;!<%8$rJV$90UL#$,$J$$!%(B
-syslog $B$G$o$6$o$6%a%C%;!<%8$r=P$9$[$I$NM}M3$b$J$$$N$G!$(B
-stderr $B$X=PNO$9$k%3!<%I$O$9$Y$F(B VERBOSE_MSG $B$H$$$&(B
-$B%3%s%Q%$%k;~%U%i%0$rM-8z$K$7$?;~$N$_AH$_9~$^$l$k$h$&$K$7$?!%(B
-
-$BL>A0$N@09g@-$r<h$k$?$a$K(B
-JISHO_FILE -> JISYO_FILE $B$H$7$F$$$k!%(B
-
-makeskkcdb.sh $B$G(B tinycdb $B$N(B cdb $B$r;H$&$h$&$K$7$?!%(B
-
-$B!|(B dbskkd-cdb $B$N35MW(B
-
-dbskkd-cdb $B$O!$(B skkserv $B$HF1MM$N5!G=$rDs6!$9$k(B SKK $BMQ$N6&DL<-=q%5!<%P!<$G(B
-$B$"$k!%<-=q$O(B D. J. Bernstein $B$N(B cdb $B$r;H$C$F%G!<%?%Y!<%92=$7!$8!:w$r9bB.(B
-$B2=$7$F$$$k!%K\%5!<%P!<$OF1<o$N%D!<%k(B pskkserv $B$r4p$K$7$F$$$k!%(B
+dbskkd-cdb ¤Ï¡¤ skkserv ¤ÈÆ±ÍÍ¤Îµ¡Ç½¤òÄó¶¡¤¹¤ë SKK ÍÑ¤Î¶¦ÄÌ¼­½ñ¥µ¡¼¥Ð¡¼¤Ç
+¤¢¤ë¡¥¼­½ñ¤Ï D. J. Bernstein ¤Î cdb ¤ò»È¤Ã¤Æ¥Ç¡¼¥¿¥Ù¡¼¥¹²½¤·¡¤¸¡º÷¤ò¹âÂ®
+²½¤·¤Æ¤¤¤ë¡¥ËÜ¥µ¡¼¥Ð¡¼¤ÏÆ±¼ï¤Î¥Ä¡¼¥ë pskkserv ¤ò´ð¤Ë¤·¤Æ¤¤¤ë¡¥
 
 cdb
 http://cr.yp.to/cdb.html
 
-$BK\%W%m%0%i%`$O(B cdb $B8_49%i%$%V%i%j$G$"$k(B tinycdb $B$X$N%j%s%/$rA0Ds$H$7$F$$$k!%(B
+ËÜ¥×¥í¥°¥é¥à¤Ï cdb ¸ß´¹¥é¥¤¥Ö¥é¥ê¤Ç¤¢¤ë TinyCDB ¤Ø¤Î¥ê¥ó¥¯¤òÁ°Äó¤È¤·¤Æ¤¤¤ë¡¥
+¥Ó¥ë¥É¤Ë¤Ï TinyCDB ¤Î¥Ø¥Ã¥À cdb.h ¤È¥é¥¤¥Ö¥é¥ê libcdb.a ¤¬É¬Í×¤Ç¤¢¤ë¡¥
+(cdb¤ÎÆ±¼ï¤Î¥é¥¤¥Ö¥é¥ê¤â»ÈÍÑ²ÄÇ½¤Ç¤¢¤ë¤¬¡¤¥Æ¥¹¥È¤·¤Æ¤¤¤Ê¤¤¡¥)
 
-tinycdb
+TinyCDB
 http://www.corpit.ru/mjt/tinycdb.html
 
-$B!|(B dbskkd-cdb $B$NF0:n4D6-(B
+¡ü dbskkd-cdb ¤ÎÆ°ºî´Ä¶­
 
-dbskkd-cdb $B$O!$8=;~E@$G$O(B
+dbskkd-cdb ¤Ï¡¤¸½»þÅÀ¤Ç¤Ï
 
 	FreeBSD 7.1-RELEASE
 
-$B$K$F4pK\E*F0:n$r3NG'$7$F$$$k!%(B
+¤Ë¤Æ´ðËÜÅªÆ°ºî¤ò³ÎÇ§¤·¤Æ¤¤¤ë¡¥
 
-FreeBSD $B$N(B port $B$*$h$S(B debian $B$N(B package $B$K$D$$$F$OF0:n$r3NG'$7$F$$$k!%(B
+FreeBSD ¤Î port ¤ª¤è¤Ó debian ¤Î package ¤Ë¤Ä¤¤¤Æ¤ÏÆ°ºî¤ò³ÎÇ§¤·¤Æ¤¤¤ë¡¥
 
-$BB>$N(B OS $B$G$bBg$-$JJQ99$J$7$KF0:n$9$k$H;W$o$l$k!%$?$@$7F0:n$N3NG'$OF0:n$N(B
-$BJ]>Z$r0UL#$7$J$$!%$^$?F0:n>r7o$N:Y$+$JJQ2=$K$h$k8mF0:n$K$D$$$F$O0l@ZJ]>Z(B
-$B$7$J$$!%(B
+Â¾¤Î OS ¤Ç¤âÂç¤­¤ÊÊÑ¹¹¤Ê¤·¤ËÆ°ºî¤¹¤ë¤È»×¤ï¤ì¤ë¡¥¤¿¤À¤·Æ°ºî¤Î³ÎÇ§¤ÏÆ°ºî¤Î
+ÊÝ¾Ú¤ò°ÕÌ£¤·¤Ê¤¤¡¥¤Þ¤¿Æ°ºî¾ò·ï¤ÎºÙ¤«¤ÊÊÑ²½¤Ë¤è¤ë¸íÆ°ºî¤Ë¤Ä¤¤¤Æ¤Ï°ìÀÚÊÝ¾Ú
+¤·¤Ê¤¤¡¥
 
-dbskkd-cdb-1.01 $B$*$h$S(B 1.71dev $B$N(B cdb $B%U%!%$%k$O$=$N$^$^F0:n$9$k!%(B
+dbskkd-cdb-1.01 ¤ª¤è¤Ó 1.71dev ¤Î cdb ¥Õ¥¡¥¤¥ë¤Ï¤½¤Î¤Þ¤ÞÆ°ºî¤¹¤ë¡¥
 
-$B!|%$%s%9%H!<%kA0$NCm0U(B
+¡ü¥¤¥ó¥¹¥È¡¼¥ëÁ°¤ÎÃí°Õ
 
-1. $BE:IU$N(B makeskkcdb.sh $B$r<B9T$9$k!%$3$N%9%/%j%W%H$G$O(B
-   $B<-=q%U%!%$%k$O(B skktocdbm.sh $B$NI8=`F~NO$KM?$($k!%(B
-   $B%U%!%$%kL>$N4{DjCM$O(B /usr/local/share/skk/SKK-JISYO.L $B$G$"$k!%(B
-   $B<B9T$9$k$H%+%l%s%H%G%#%l%/%H%j$K(B SKK-JISYO.L.cdb $B$,:n$i$l$k!%(B
-   $B$3$N<-=q%U%!%$%k$O%$%s%9%H!<%k$N:](B dbskkd-cdb.c $BCf$N(B
-   JISYO_FILE $B$G;XDj$9$k%G%#%l%/%H%j$KCV$/!%(B
-   JISYO_FILE $B$N5,DjCM$O(B /usr/local/share/skk/SKK-JISYO.L.cdb $B$G$"$k!%(B
-   $BCm0U(B: 1.x $B$G$O$3$N%^%/%m$O(B "JISHO_FILE" $B$HDj5A$7$F$$$?$,!$(B
-   $B<-=q%U%!%$%k$H$NL>A0$N@09g@-$r<h$k$?$a$K$3$N$h$&$K$7$?!%(B
+1. ÅºÉÕ¤Î makeskkcdb.sh ¤ò¼Â¹Ô¤¹¤ë¡¥¤³¤Î¥¹¥¯¥ê¥×¥È¤Ç¤Ï
+   ¼­½ñ¥Õ¥¡¥¤¥ë¤Ï skktocdbm.sh ¤ÎÉ¸½àÆþÎÏ¤ËÍ¿¤¨¤ë¡¥
+   ¥Õ¥¡¥¤¥ëÌ¾¤Î´ûÄêÃÍ¤Ï /usr/local/share/skk/SKK-JISYO.L ¤Ç¤¢¤ë¡¥
+   ¼Â¹Ô¤¹¤ë¤È¥«¥ì¥ó¥È¥Ç¥£¥ì¥¯¥È¥ê¤Ë SKK-JISYO.L.cdb ¤¬ºî¤é¤ì¤ë¡¥
+   ¤³¤Î¼­½ñ¥Õ¥¡¥¤¥ë¤Ï¥¤¥ó¥¹¥È¡¼¥ë¤ÎºÝ dbskkd-cdb.c Ãæ¤Î
+   JISYO_FILE ¤Ç»ØÄê¤¹¤ë¥Ç¥£¥ì¥¯¥È¥ê¤ËÃÖ¤¯¡¥
+   JISYO_FILE ¤Îµ¬ÄêÃÍ¤Ï /usr/local/share/skk/SKK-JISYO.L.cdb ¤Ç¤¢¤ë¡¥
+   Ãí°Õ: 1.x ¤Ç¤Ï¤³¤Î¥Þ¥¯¥í¤Ï "JISHO_FILE" ¤ÈÄêµÁ¤·¤Æ¤¤¤¿¤¬¡¤
+   ¼­½ñ¥Õ¥¡¥¤¥ë¤È¤ÎÌ¾Á°¤ÎÀ°¹çÀ­¤ò¼è¤ë¤¿¤á¤Ë¤³¤Î¤è¤¦¤Ë¤·¤¿¡¥
 
-2. $B<B9T%U%!%$%k(B dbskkd-cdb $B$r%3%s%Q%$%k$9$k$?$a(B make $B$9$k!%(B
-   $B$3$N:](B tinycdb $BCf$N(B cdb.h $B$,I,MW$H$J$k!%(B
-   $B$^$?(B tinycdb $BCf$N(B libcdb.a $B$r%j%s%/$9$k!%(B
+2. ¼Â¹Ô¥Õ¥¡¥¤¥ë dbskkd-cdb ¤ò¥³¥ó¥Ñ¥¤¥ë¤¹¤ë¤¿¤á make ¤¹¤ë¡¥
+   ¤³¤ÎºÝ TinyCDB Ãæ¤Î cdb.h ¤¬É¬Í×¤È¤Ê¤ë¡¥
+   ¤Þ¤¿ TinyCDB Ãæ¤Î libcdb.a ¤ò¥ê¥ó¥¯¤¹¤ë¡¥
 
-3. make install $B$G(B dbskkd-cdb $B$r<B9T%G%#%l%/%H%j$K%3%T!<$9$k!%(B
-   $B4{DjCM$G$O(B /usr/local/libexec $B$X%3%T!<$9$k!%(B
+3. make install ¤Ç dbskkd-cdb ¤ò¼Â¹Ô¥Ç¥£¥ì¥¯¥È¥ê¤Ë¥³¥Ô¡¼¤¹¤ë¡¥
+   ´ûÄêÃÍ¤Ç¤Ï /usr/local/libexec ¤Ø¥³¥Ô¡¼¤¹¤ë¡¥
 
-$B!|%$%s%9%H!<%k$N:]$NCm0U(B
+¡ü¥¤¥ó¥¹¥È¡¼¥ë¤ÎºÝ¤ÎÃí°Õ
 
-$B$3$N%W%m%0%i%`@lMQ$NHsFC8"%f!<%6$r@_Dj$7!$(B
-$B$=$N%f!<%6$N8"8B$G5/F0$9$k$h$&$K$9$k$3$H!%(B
-* root $B8"8B$G5/F0$7$F$O$J$i$J$$!%(B*
+¤³¤Î¥×¥í¥°¥é¥àÀìÍÑ¤ÎÈóÆÃ¸¢¥æ¡¼¥¶¤òÀßÄê¤·¡¤
+¤½¤Î¥æ¡¼¥¶¤Î¸¢¸Â¤Çµ¯Æ°¤¹¤ë¤è¤¦¤Ë¤¹¤ë¤³¤È¡¥
 
-example-inetd.txt $B$K(B inetd.conf $B$X$NDI2CFbMFNc!$(B
-example-daemontools.txt $B$K(B daemontools $B$r;H$C$?>l9g$N(B
-run $B%U%!%$%k$X$N5-=RNc$r<($7$F$$$k!%(B
+¡ú root ¸¢¸Â¤Çµ¯Æ°¤·¤Æ¤Ï¤Ê¤é¤Ê¤¤¡¥
 
-$B!|Cm0U!&8B3&!&2~NI$NM>CO(B
+example-inetd.txt ¤Ë inetd.conf ¤Ø¤ÎÄÉ²ÃÆâÍÆÎã¡¤
+example-daemontools.txt ¤Ë daemontools ¤ò»È¤Ã¤¿¾ì¹ç¤Î
+run ¥Õ¥¡¥¤¥ë¤Ø¤Îµ­½ÒÎã¤ò¼¨¤·¤Æ¤¤¤ë¡¥
 
-dbskkd-cdb $B$O0lC65/F0$5$l$k$H=*N;$9$k$^$G$O(Bcdb$B<-=q%U%!%$%k$r%*!<%W%s$7$?(B
-$B$^$^$K$J$C$F$$$k!%(B cdb $B$G$O%*!<%W%s$5$l$?%U%!%$%k$NCf?H$OJQ$o$i$J$$$3$H$r(B
-$B2>Dj$7$F$$$k$?$a!$(B dbskkd-cdb $B$r5/F0$7$?>uBV$G(B cdb $B<-=q%U%!%$%k$NFbMF$rJQ(B
-$B99$7$F$O$J$i$J$$!%(B cdb $B<-=q%U%!%$%k$r:n$jD>$9>l9g$O!$(B dbskkd-cdb $B$r5/F0$7(B
-$B$F$$$J$$$3$H$r3NG'$9$kI,MW$,$"$k!%(B
+¡üÃí°Õ¡¦¸Â³¦¡¦²þÎÉ¤ÎÍ¾ÃÏ
 
-$B8D?ME*$K$O(B SERVER_NOT_FOUND $B$N;~$N5sF0$OL5BL$@$H;W$&$,!$47=,$H$7$FBP1~$7(B
-$B$F$$$k!%(B
+dbskkd-cdb ¤Ï°ìÃ¶µ¯Æ°¤µ¤ì¤ë¤È½ªÎ»¤¹¤ë¤Þ¤Ç¤Ïcdb¼­½ñ¥Õ¥¡¥¤¥ë¤ò¥ª¡¼¥×¥ó¤·¤¿
+¤Þ¤Þ¤Ë¤Ê¤Ã¤Æ¤¤¤ë¡¥ cdb ¤Ç¤Ï¥ª¡¼¥×¥ó¤µ¤ì¤¿¥Õ¥¡¥¤¥ë¤ÎÃæ¿È¤ÏÊÑ¤ï¤é¤Ê¤¤¤³¤È¤ò
+²¾Äê¤·¤Æ¤¤¤ë¤¿¤á¡¤ dbskkd-cdb ¤òµ¯Æ°¤·¤¿¾õÂÖ¤Ç cdb ¼­½ñ¥Õ¥¡¥¤¥ë¤ÎÆâÍÆ¤òÊÑ
+¹¹¤·¤Æ¤Ï¤Ê¤é¤Ê¤¤¡¥ cdb ¼­½ñ¥Õ¥¡¥¤¥ë¤òºî¤êÄ¾¤¹¾ì¹ç¤Ï¡¤ dbskkd-cdb ¤òµ¯Æ°¤·
+¤Æ¤¤¤Ê¤¤¤³¤È¤ò³ÎÇ§¤¹¤ëÉ¬Í×¤¬¤¢¤ë¡¥
 
-$B!|G[I[>r7o(B
+¸Ä¿ÍÅª¤Ë¤Ï SERVER_NOT_FOUND ¤Î»þ¤ÎµóÆ°¤ÏÌµÂÌ¤À¤È»×¤¦¤¬¡¤´·½¬¤È¤·¤ÆÂÐ±þ¤·
+¤Æ¤¤¤ë¡¥¥×¥í¥È¥³¥ë¤Î¾ÜºÙ¤Ë¤Ä¤¤¤Æ¤Ï skk-server-protocol.txt ¤Ëµ­¤·¤Æ¤¤¤ë¡¥
+
+¡üÇÛÉÛ¾ò·ï
 
 Creative Commons Attribution 3.0 Unported License
 http://creativecommons.org/licenses/by/3.0/
-$B$"$k$$$O(B
+¤¢¤ë¤¤¤Ï
 Simplified BSD License
-$B$K=`5r$7$^$9!%(B
+¤Ë½àµò¤·¤Þ¤¹¡¥
 
-$B>\$7$$>r7o$K$D$$$F$O(B $B%U%!%$%k(B LICENSE $B$NFbMF$r(B
-$B;2>H$7$F$/$@$5$$!%(B
+¾Ü¤·¤¤¾ò·ï¤Ë¤Ä¤¤¤Æ¤Ï ¥Õ¥¡¥¤¥ë LICENSE ¤ÎÆâÍÆ¤ò
+»²¾È¤·¤Æ¤¯¤À¤µ¤¤¡¥
 
-$B!|%P%0%l%]!<%H!$0U8+8r49$J$I(B
+¡ü¥Ð¥°¥ì¥Ý¡¼¥È¡¤°Õ¸«¸ò´¹¤Ê¤É
 
-$BK\%W%m%0%i%`$K4X$9$k0U8+8r49$O(B
-$B>pJs6&M-$N$?$a(B
-Google Code $B>e$N%l%]%8%H%j(B
+ËÜ¥×¥í¥°¥é¥à¤Ë´Ø¤¹¤ë°Õ¸«¸ò´¹¤Ï
+¾ðÊó¶¦Í­¤Î¤¿¤á
+Google Code ¾å¤Î¥ì¥Ý¥¸¥È¥ê
 http://code.google.com/p/dbskkd-cdb/
-$B$N>e$G$*4j$$$7$^$9!%(B
-$BF|K\8l$"$k$$$O1Q8l$G$*4j$$$7$^$9!%(B
+¤Î¾å¤Ç¤ª´ê¤¤¤·¤Þ¤¹¡¥
+ÆüËÜ¸ì¤¢¤ë¤¤¤Ï±Ñ¸ì¤Ç¤ª´ê¤¤¤·¤Þ¤¹¡¥
 
-$B!|<U<-(B
+¡ü¼Õ¼­
 
-cdb $B$N3+H/<T(B Daniel J. Bernstein $B$*$h$S(B
-TinyCDB $B$N3+H/<T(B Michael Tokarev $B$NN>;a$K(B
-$B:GBg8B$N46<U$H;?<-$rB#$j$^$9!%(B
+cdb ¤Î³«È¯¼Ô Daniel J. Bernstein ¤ª¤è¤Ó
+TinyCDB ¤Î³«È¯¼Ô Michael Tokarev ¤ÎÎ¾»á¤Ë
+ºÇÂç¸Â¤Î´¶¼Õ¤È»¿¼­¤òÂ£¤ê¤Þ¤¹¡¥
 
-$B$^$?!$K\%W%m%0%i%`$N3+H/$K$"$?$C$F!$0J2<$NJ}!9!$(B
-$B$3$3$KNs5s$7$F$$$J$$(B contributor $B$N3'MM!$(B
-$B$J$i$S$K(B SKK $B$NMxMQ$rDL$8$F2~NIE@$J$I$r$465<($/$@$5$C$?3'MM$K(B
-$B46<UCW$7$^$9!%(B
+¤Þ¤¿¡¤ËÜ¥×¥í¥°¥é¥à¤Î³«È¯¤Ë¤¢¤¿¤Ã¤Æ¡¤°Ê²¼¤ÎÊý¡¹¡¤
+¤³¤³¤ËÎóµó¤·¤Æ¤¤¤Ê¤¤ contributor ¤Î³§ÍÍ¡¤
+¤Ê¤é¤Ó¤Ë SKK ¤ÎÍøÍÑ¤òÄÌ¤¸¤Æ²þÎÉÅÀ¤Ê¤É¤ò¤´¶µ¼¨¤¯¤À¤µ¤Ã¤¿³§ÍÍ¤Ë
+´¶¼ÕÃ×¤·¤Þ¤¹¡¥
 
-($B7I>NN,(B)
+(·É¾ÎÎ¬)
 
-$B:4F#(B $B2mI'!$CfEg(B $B44IW!$55;3(B $B9,5A!$:4F#(B $B@5>O!$:eK\(B $B?r!$1-;t(B $BJ8IR!$(B
-$BA0Ln(B $BG/5*!$K\ED(B $B9/90!$Cf86(B $BAa@8!$5FCO(B $B9b9-!$$^$D$b$H$R$G$*!$(B
-$B8q9>(B $B1QN4!$@nB<(B $B>0@8!$LZ86(B $B1Q?M!$0p0w(B $BNO;N!$>>2<(B $B@?!$;3eQ(B $BFX!$(B
-$BLZ2<(B $BC#Li!$Cf5o(B $BNI2p(B
+º´Æ£ ²íÉ§¡¤ÃæÅç ´´É×¡¤µµ»³ ¹¬µÁ¡¤º´Æ£ Àµ¾Ï¡¤ºåËÜ ¿ò¡¤±­»ô Ê¸ÉÒ¡¤
+Á°Ìî Ç¯µª¡¤ËÜÅÄ ¹¯¹°¡¤Ãæ¸¶ ÁáÀ¸¡¤µÆÃÏ ¹â¹­¡¤¤Þ¤Ä¤â¤È¤Ò¤Ç¤ª¡¤
+¸ñ¹¾ ±ÑÎ´¡¤ÀîÂ¼ ¾°À¸¡¤ÌÚ¸¶ ±Ñ¿Í¡¤°ð°÷ ÎÏ»Î¡¤¾¾²¼ À¿¡¤»³åÑ ÆØ¡¤
+ÌÚ²¼ Ã£Ìé¡¤Ãæµï ÎÉ²ð
+
+¡ü1.71dev ¤«¤é¤Î½¤Àµ²Õ½ê¤Î¥á¥â
+(see CHANGES for details)
+
+ÌÚ²¼Ã£Ìé¤µ¤ó (Debian maintainer) ¤«¤é¤Î¥Ñ¥Ã¥Á¤òÅ¬ÍÑ
+
+°Ê²¼¤Î Twitter @konosuke »á¤«¤é¤Î»ØÅ¦¤Ë¤è¤ê¡¤ BSD make °ÍÂ¸¤ÎÉôÊ¬¤ò GNU
+make ¤Ç¤âÄÌ¤ë¤è¤¦¤Ë¤·¤¿
+
+http://twitter.com/konosuke/status/1094925767
+
+gcc-4.2.1 (FreeBSD 7.1-RELEASE stock cc) ¤Î signedness ¤ÎÌäÂê¤ò¤È¤ê¤¢¤¨
+¤º·Á¼°Åª¤Ë½¤Àµ(°ÕÌ£Åª¤Ë¤âÌäÂê¤Ï¤Ê¤¤¤È»×¤¦¤¬¡¤Í×³ÎÇ§)
+
+chroot, setuid, setgid ¤ò¤ä¤á¤¿¡¥
+
+TinyCDB ¤Ë¥ê¥ó¥¯¤¹¤ë¤è¤¦¤ËÊÑ¹¹
+FreeBSD ¤Ç¤â¼ç¤Ê Linux distro ¤Ç¤â tinycdb-0.76 ¤Î cdb.h ¤ÏÊÌÅÓÆþ¼ê²Ä
+(FreeBSD databases/tinycdb, Debian libcdb-dev package)
+
+hostname/IP ¥¢¥É¥ì¥¹¤òÊÖ¤¹¥¯¥é¥¤¥¢¥ó¥È¤«¤é¤ÎÍ×µá ('3') ¤Ï¡¤
+ÊÑ´¹¤ÎÍÑÅÓ¤Ë¤Ï¤Þ¤Ã¤¿¤¯»È¤ï¤ì¤Æ¤¤¤Ê¤¤¤³¤È¤ò³ÎÇ§
+(¾ðÊóÉ½¼¨ÍÑ¤ÎÍÑÅÓ¤Î¤ß)
+¤è¤Ã¤Æ¤³¤ÎÍ×µá¤ËÂÐ¤¹¤ëÊÖÅú¤Ï¸ÇÄêÊ¸»úÎó¤ÇÊÖ¤¹¤è¤¦¤Ë¤·¤¿¡¥
+¤³¤ì¤Ç TCPLOCALHOST/TCPLOCALIP ¤ò getenv() ¤·¤Ê¤¯¤ÆºÑ¤à¡¥
+
+inetd ¤Ï stderr ¤â stdout Æ±ÍÍ¤Ë°·¤Ã¤Æ¤·¤Þ¤¦¤¿¤á¡¤
+stderr ¤Ç¥á¥Ã¥»¡¼¥¸¤òÊÖ¤¹°ÕÌ£¤¬¤Ê¤¤¡¥
+syslog ¤Ç¤ï¤¶¤ï¤¶¥á¥Ã¥»¡¼¥¸¤ò½Ð¤¹¤Û¤É¤ÎÍýÍ³¤â¤Ê¤¤¤Î¤Ç¡¤
+stderr ¤Ø½ÐÎÏ¤¹¤ë¥³¡¼¥É¤Ï¤¹¤Ù¤Æ VERBOSE_MSG ¤È¤¤¤¦
+¥³¥ó¥Ñ¥¤¥ë»þ¥Õ¥é¥°¤òÍ­¸ú¤Ë¤·¤¿»þ¤Î¤ßÁÈ¤ß¹þ¤Þ¤ì¤ë¤è¤¦¤Ë¤·¤¿¡¥
+
+Ì¾Á°¤ÎÀ°¹çÀ­¤ò¼è¤ë¤¿¤á¤Ë
+JISHO_FILE -> JISYO_FILE ¤È¤·¤Æ¤¤¤ë¡¥
+
+makeskkcdb.sh ¤Ç tinycdb ¤Î cdb ¤ò»È¤¦¤è¤¦¤Ë¤·¤¿¡¥
+
+READMEJP ¤Î encoding ¤ò euc-jp ¤ËÊÑ¹¹¡¥
+skk-server-protocol.txt ¤òÄÉ²Ã¡¥
+README ¤òÄÉ²Ã¡¥
 
 [End of memorandum]
