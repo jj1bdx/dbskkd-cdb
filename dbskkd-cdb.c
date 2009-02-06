@@ -45,7 +45,7 @@
 #define STDOUT (fileno(stdout))
 
 /* these strings must be terminated with space */
-#define VERSION "dbskkd-cdb-1.99expr-20090125-2 " 
+#define VERSION "dbskkd-cdb-2.00 " 
 #define DUMMYHOSTNAME "novalue: "
 
 /*
