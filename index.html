@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>dbskkd-cdb by jj1bdx</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/jj1bdx/dbskkd-cdb">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/jj1bdx/dbskkd-cdb/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/jj1bdx/dbskkd-cdb/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>dbskkd-cdb</h1>
+          <p>SKK dictionary server based on cdb</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/jj1bdx">jj1bdx</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="dbskkd-cdb-readmeinstallation-note-in-english" class="anchor" href="#dbskkd-cdb-readmeinstallation-note-in-english"><span class="octicon octicon-link"></span></a>dbskkd-cdb readme/installation note in English</h1>
+
+<p>for version dbskkd-cdb-2.00</p>
+
+<p>by Kenji Rikitake <a href="mailto:kenji.rikitake@acm.org">kenji.rikitake@acm.org</a></p>
+
+<p>last updated 15-AUG-2010</p>
+
+<h1>
+<a name="summary" class="anchor" href="#summary"><span class="octicon octicon-link"></span></a>Summary</h1>
+
+<p>dbskkd-cdb is a dictionary server for SKK Japanese Input Method system.
+For building the executable file, <a href="http://www.corpit.ru/mjt/tinycdb.html">TinyCDB</a>
+is required.</p>
+
+<p>See <code>skk-server-protocol.txt</code> for the details.</p>
+
+<p>This program is tested under FreeBSD 7.3-RELEASE.</p>
+
+<h1>
+<a name="installation-procedure" class="anchor" href="#installation-procedure"><span class="octicon octicon-link"></span></a>Installation procedure</h1>
+
+<ol>
+<li><p>makeskkcdb.sh converts a plaintext SKK dictionary to the CDB format.
+The default source file name is <code>/usr/local/share/skk/SKK-JISYO.L</code>
+and the converted cdb file will be placed in the current directory
+as <code>SKK-JISYO.L.cdb</code>.  This <code>.cdb</code> file should be placed with the filename
+specified in <code>JISYO_FILE</code> macro in <code>dbskkd-cdb.c</code>.</p></li>
+<li><p>do <code>make</code> to compile.  This require <code>cdb.h</code> and <code>libcdb.a</code> of TinyCDB.</p></li>
+<li><p>do <code>make install</code> to copy the compile executable image to the
+executable image directory.  The default directory is <code>/usr/local/libexec</code>.</p></li>
+</ol><h1>
+<a name="user-privilege-on-installation" class="anchor" href="#user-privilege-on-installation"><span class="octicon octicon-link"></span></a>User privilege on installation</h1>
+
+<p>Assign a dedicated non-privileged user for this program and invoke with
+the uid.</p>
+
+<p>DO NOT invoke with the root or superuser privilege.</p>
+
+<p>An example of <code>inetd.conf</code> is available at <code>example-inetd.txt</code>.
+An example of daemontools run file is available <code>at example-daemontools.txt</code>.</p>
+
+<h1>
+<a name="bug-reports-and-comments" class="anchor" href="#bug-reports-and-comments"><span class="octicon octicon-link"></span></a>Bug reports and comments</h1>
+
+<p>The source code repository and issue tracker is available in Github at
+<a href="http://github.com/jj1bdx/dbskkd-cdb">http://github.com/jj1bdx/dbskkd-cdb</a></p>
+
+<p>Inquiries and comments are welcome in Japanese and English.</p>
+
+<h1>
+<a name="acknowledgment" class="anchor" href="#acknowledgment"><span class="octicon octicon-link"></span></a>Acknowledgment</h1>
+
+<p>Daniel J. Bernstein for his cdb, Michael Tokarev for his TinyCDB.</p>
+
+<p>SKK developers and contributors including:</p>
+
+<p>Makahito Sato, Mikio Nakajima, Yukiyoshi Kameyama, Masaaki Sato,
+Takashi Sakamoto, Fumitoshi Ukai, Toshinori Maeno, Yasuhiro Honda,
+Hayao Nakahara, Takahiro Kikuchi, Hideo Matsumoto, Hidetaka Koie,
+Takao Kawamura, Hideto Kihara, Rikishi Inakazu, Makoto Matsushita,
+Atsushi Yamagata, Tatsuya Kinoshita, Ryosuke Nakai.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
