@@ -3,7 +3,7 @@
  * SKK dictionary Server
  * with Daniel J. Bernstein's cdb database
  *
- * Copyright (c) 1998-2009 by Kenji Rikitake. All rights reserved.
+ * Copyright (c) 1998-2013 by Kenji Rikitake. All rights reserved.
  * See LICENSE of the distribution kit for the redistribution conditions.
  * The copy of the LICENSE file is attached at the end of this code.
  */
@@ -202,7 +202,7 @@ int main(int argc, char *argv[])
 /* 
  * License statement for dbskkd-cdb
  * 
- * Copyright (c) 1998-2009 by Kenji Rikitake. All rights reserved.
+ * Copyright (c) 1998-2013 by Kenji Rikitake. All rights reserved.
  * 
  * This software is distributed under the terms of either
  * 
@@ -237,7 +237,7 @@ int main(int argc, char *argv[])
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * 
  * For more information on the dbskkd-cdb project, please refer to 
- * http://code.google.com/p/dbskkd-cdb/
+ * https://github.com/jj1bdx/dbskkd-cdb/
  * 
  * [End of License statement for dbskkd-cdb]
  */
