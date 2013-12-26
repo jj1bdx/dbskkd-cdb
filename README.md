@@ -4,7 +4,7 @@ for version dbskkd-cdb-2.00
 
 by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
 
-last updated 15-AUG-2010
+last updated 26-DEC-2013
 
 # Summary
 
@@ -14,7 +14,7 @@ is required.
 
 See `skk-server-protocol.txt` for the details.
 
-This program is tested under FreeBSD 7.3-RELEASE.
+This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).
 
 # Installation procedure
 
@@ -38,6 +38,10 @@ DO NOT invoke with the root or superuser privilege.
 
 An example of `inetd.conf` is available at `example-inetd.txt`.
 An example of daemontools run file is available `at example-daemontools.txt`.
+
+# Note on collecting user information
+
+dbskkd-cdb does *not* collect any usage statistics or information.
 
 # Bug reports and comments
 
