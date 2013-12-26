@@ -45,10 +45,10 @@
 
 <p>by Kenji Rikitake <a href="mailto:kenji.rikitake@acm.org">kenji.rikitake@acm.org</a></p>
 
-<p>last updated 15-AUG-2010</p>
+<p>last updated 26-DEC-2013</p>
 
-<h1>
-<a name="summary" class="anchor" href="#summary"><span class="octicon octicon-link"></span></a>Summary</h1>
+<h2>
+<a name="summary" class="anchor" href="#summary"><span class="octicon octicon-link"></span></a>Summary</h2>
 
 <p>dbskkd-cdb is a dictionary server for SKK Japanese Input Method system.
 For building the executable file, <a href="http://www.corpit.ru/mjt/tinycdb.html">TinyCDB</a>
@@ -56,10 +56,10 @@ is required.</p>
 
 <p>See <code>skk-server-protocol.txt</code> for the details.</p>
 
-<p>This program is tested under FreeBSD 7.3-RELEASE.</p>
+<p>This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).</p>
 
-<h1>
-<a name="installation-procedure" class="anchor" href="#installation-procedure"><span class="octicon octicon-link"></span></a>Installation procedure</h1>
+<h2>
+<a name="installation-procedure" class="anchor" href="#installation-procedure"><span class="octicon octicon-link"></span></a>Installation procedure</h2>
 
 <ol>
 <li><p>makeskkcdb.sh converts a plaintext SKK dictionary to the CDB format.
@@ -70,8 +70,8 @@ specified in <code>JISYO_FILE</code> macro in <code>dbskkd-cdb.c</code>.</p></li
 <li><p>do <code>make</code> to compile.  This require <code>cdb.h</code> and <code>libcdb.a</code> of TinyCDB.</p></li>
 <li><p>do <code>make install</code> to copy the compile executable image to the
 executable image directory.  The default directory is <code>/usr/local/libexec</code>.</p></li>
-</ol><h1>
-<a name="user-privilege-on-installation" class="anchor" href="#user-privilege-on-installation"><span class="octicon octicon-link"></span></a>User privilege on installation</h1>
+</ol><h2>
+<a name="user-privilege-on-installation" class="anchor" href="#user-privilege-on-installation"><span class="octicon octicon-link"></span></a>User privilege on installation</h2>
 
 <p>Assign a dedicated non-privileged user for this program and invoke with
 the uid.</p>
@@ -81,16 +81,21 @@ the uid.</p>
 <p>An example of <code>inetd.conf</code> is available at <code>example-inetd.txt</code>.
 An example of daemontools run file is available <code>at example-daemontools.txt</code>.</p>
 
-<h1>
-<a name="bug-reports-and-comments" class="anchor" href="#bug-reports-and-comments"><span class="octicon octicon-link"></span></a>Bug reports and comments</h1>
+<h2>
+<a name="note-on-collecting-user-information" class="anchor" href="#note-on-collecting-user-information"><span class="octicon octicon-link"></span></a>Note on collecting user information</h2>
+
+<p>dbskkd-cdb does <em>not</em> collect any usage statistics or information.</p>
+
+<h2>
+<a name="bug-reports-and-comments" class="anchor" href="#bug-reports-and-comments"><span class="octicon octicon-link"></span></a>Bug reports and comments</h2>
 
 <p>The source code repository and issue tracker is available in Github at
 <a href="http://github.com/jj1bdx/dbskkd-cdb">http://github.com/jj1bdx/dbskkd-cdb</a></p>
 
 <p>Inquiries and comments are welcome in Japanese and English.</p>
 
-<h1>
-<a name="acknowledgment" class="anchor" href="#acknowledgment"><span class="octicon octicon-link"></span></a>Acknowledgment</h1>
+<h2>
+<a name="acknowledgment" class="anchor" href="#acknowledgment"><span class="octicon octicon-link"></span></a>Acknowledgment</h2>
 
 <p>Daniel J. Bernstein for his cdb, Michael Tokarev for his TinyCDB.</p>
 
