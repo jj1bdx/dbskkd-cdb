@@ -6,7 +6,7 @@ by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
 
 last updated 26-DEC-2013
 
-# Summary
+## Summary
 
 dbskkd-cdb is a dictionary server for SKK Japanese Input Method system.
 For building the executable file, [TinyCDB](http://www.corpit.ru/mjt/tinycdb.html)
@@ -16,7 +16,7 @@ See `skk-server-protocol.txt` for the details.
 
 This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).
 
-# Installation procedure
+## Installation procedure
 
 1. makeskkcdb.sh converts a plaintext SKK dictionary to the CDB format.
    The default source file name is `/usr/local/share/skk/SKK-JISYO.L`
@@ -29,7 +29,7 @@ This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).
 3. do `make install` to copy the compile executable image to the
    executable image directory.  The default directory is `/usr/local/libexec`.
 
-# User privilege on installation
+## User privilege on installation
 
 Assign a dedicated non-privileged user for this program and invoke with
 the uid.
@@ -39,18 +39,18 @@ DO NOT invoke with the root or superuser privilege.
 An example of `inetd.conf` is available at `example-inetd.txt`.
 An example of daemontools run file is available `at example-daemontools.txt`.
 
-# Note on collecting user information
+## Note on collecting user information
 
 dbskkd-cdb does *not* collect any usage statistics or information.
 
-# Bug reports and comments
+## Bug reports and comments
 
 The source code repository and issue tracker is available in Github at
 <http://github.com/jj1bdx/dbskkd-cdb>
 
 Inquiries and comments are welcome in Japanese and English.
 
-# Acknowledgment
+## Acknowledgment
 
 Daniel J. Bernstein for his cdb, Michael Tokarev for his TinyCDB.
 
