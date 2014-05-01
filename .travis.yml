@@ -2,7 +2,8 @@ language: c
 notifications:
   email: false
 before_install: sudo apt-get install tinycdb
-script: make
+script: env CC="cc -Wall -O2 -g -I/usr/include" make
 compiler:
   - clang
   - gcc
+install: true
