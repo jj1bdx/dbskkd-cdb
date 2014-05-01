@@ -1,0 +1,7 @@
+language: c
+notifications:
+  email: false
+script: make
+compiler:
+  - clang
+  - gcc
