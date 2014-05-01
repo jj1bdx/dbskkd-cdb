@@ -1,6 +1,7 @@
 language: c
 notifications:
   email: false
+before_install: sudo apt-get tinycdb
 script: make
 compiler:
   - clang
