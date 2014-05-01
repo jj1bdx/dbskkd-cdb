@@ -1,8 +1,8 @@
 language: c
 notifications:
   email: false
-before_install: sudo apt-get install libtinycdb-devel
-script: make CC="cc -Wall -O2 -g -I/usr/include" CDBLIB="/usr/lib/libcdb.a"
+before_install: sudo apt-get install libcdb-dev
+script: make CC="cc -Wall -O2 -g -I/usr/include"
 compiler:
   - clang
   - gcc
