@@ -2,5 +2,5 @@ language: c
 notifications:
   email: false
 before_install: sudo apt-get install libcdb-dev
-script: make CC="cc -Wall -O2 -g -I/usr/include" CDBLIB="/usr/lib/libcdb.a"
+script: make CC="gcc -Wall -O2 -g -I/usr/include" CDBLIB="/usr/lib/libcdb.a"
 install: true
