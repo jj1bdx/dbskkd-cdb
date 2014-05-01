@@ -4,7 +4,11 @@ for version dbskkd-cdb-2.00
 
 by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
 
-last updated 26-DEC-2013
+last updated 1-MAY-2014
+
+## Travis CI build status for the master branch
+
+[![Build Status](https://travis-ci.org/jj1bdx/dbskkd-cdb.svg?branch=master)](https://travis-ci.org/jj1bdx/dbskkd-cdb)
 
 ## Summary
 
