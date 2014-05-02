@@ -2,7 +2,7 @@ language: c
 notifications:
   email: false
 before_install: sudo apt-get install libcdb-dev
-script: make COMPAT="-Wall -O2 -g -I/usr/include" CDBLIB="/usr/lib/libcdb.a"
+script: make CC=${CC} COMPAT="-Wall -O2 -g -I/usr/include" CDBLIB="/usr/lib/libcdb.a"
 install: true
 compiler:
     - clang
