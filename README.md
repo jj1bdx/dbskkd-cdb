@@ -18,7 +18,10 @@ is required.
 
 See `skk-server-protocol.txt` for the details.
 
-This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).
+## Test environment
+
+* FreeBSD/amd64 10.0-STABLE
+* On [Travis CI](https://travis-ci.org/jj1bdx/dbskkd-cdb): Ubuntu 12.04 LTS Precise
 
 ## Installation procedure
 
@@ -29,6 +32,7 @@ This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).
    specified in `JISYO_FILE` macro in `dbskkd-cdb.c`.
 
 2. do `make` to compile.  This require `cdb.h` and `libcdb.a` of TinyCDB.
+   For the Make prodecure on Linux, consult `.travis.yml`.
 
 3. do `make install` to copy the compile executable image to the
    executable image directory.  The default directory is `/usr/local/libexec`.
@@ -50,9 +54,10 @@ dbskkd-cdb does *not* collect any usage statistics or information.
 ## Bug reports and comments
 
 The source code repository and issue tracker is available in Github at
-<http://github.com/jj1bdx/dbskkd-cdb>
-
-Inquiries and comments are welcome in Japanese and English.
+<http://github.com/jj1bdx/dbskkd-cdb>.  
+Inquiries and comments are welcome by the forms of GitHub Pull Requests
+and issues in Japanese and English.  If you do not want to use GitHub,
+contact Kenji Rikitake by email for your proposals.
 
 ## Acknowledgment
 
