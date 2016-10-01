@@ -4,7 +4,7 @@ for version dbskkd-cdb-2.00
 
 by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
 
-last updated 26-DEC-2013
+last updated 2-OCT-2016
 
 ## dbskkd-cdb の概要
 
@@ -50,9 +50,7 @@ dbskkd-cdb では，接続してきたクライアントの利用履歴を取る
 
 ## 配布条件
 
-Creative Commons Attribution 3.0 Unported License <http://creativecommons.org/licenses/by/3.0/> あるいは Simplified BSD License に準拠します．
-
-詳しい条件については ファイル LICENSE の内容を参照してください．
+BSD 3-Clause License に準拠します．詳しい条件については ファイル LICENSE の内容を参照してください．
 
 ## バグレポート，意見交換など
 
