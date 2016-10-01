@@ -4,7 +4,7 @@ for version dbskkd-cdb-2.00
 
 by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
 
-last updated 1-MAY-2014
+last updated 2-OCT-2016
 
 ## Travis CI build status for the master branch
 
@@ -17,6 +17,10 @@ For building the executable file, [TinyCDB](http://www.corpit.ru/mjt/tinycdb.htm
 is required.
 
 See `skk-server-protocol.txt` for the details.
+
+## License
+
+See `LICENSE`. BSD 3-Clause.
 
 ## Test environment
 
