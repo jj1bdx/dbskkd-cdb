@@ -26,7 +26,12 @@
 
 <p>by Kenji Rikitake <a href="mailto:kenji.rikitake@acm.org">kenji.rikitake@acm.org</a></p>
 
-<p>last updated 26-DEC-2013</p>
+<p>last updated 2-OCT-2016</p>
+
+<h2>
+<a id="travis-ci-build-status-for-the-master-branch" class="anchor" href="#travis-ci-build-status-for-the-master-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Travis CI build status for the master branch</h2>
+
+<p><a href="https://travis-ci.org/jj1bdx/dbskkd-cdb"><img src="https://travis-ci.org/jj1bdx/dbskkd-cdb.svg?branch=master" alt="Build Status"></a></p>
 
 <h2>
 <a id="summary" class="anchor" href="#summary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Summary</h2>
@@ -37,7 +42,18 @@ is required.</p>
 
 <p>See <code>skk-server-protocol.txt</code> for the details.</p>
 
-<p>This program is tested under FreeBSD 10.0-PRERELEASE (svn r259846).</p>
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>See <code>LICENSE</code>. BSD 3-Clause.</p>
+
+<h2>
+<a id="test-environment" class="anchor" href="#test-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test environment</h2>
+
+<ul>
+<li>FreeBSD/amd64 10.0-STABLE</li>
+<li>On <a href="https://travis-ci.org/jj1bdx/dbskkd-cdb">Travis CI</a>: Ubuntu 12.04 LTS Precise</li>
+</ul>
 
 <h2>
 <a id="installation-procedure" class="anchor" href="#installation-procedure" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation procedure</h2>
@@ -48,7 +64,8 @@ The default source file name is <code>/usr/local/share/skk/SKK-JISYO.L</code>
 and the converted cdb file will be placed in the current directory
 as <code>SKK-JISYO.L.cdb</code>.  This <code>.cdb</code> file should be placed with the filename
 specified in <code>JISYO_FILE</code> macro in <code>dbskkd-cdb.c</code>.</p></li>
-<li><p>do <code>make</code> to compile.  This require <code>cdb.h</code> and <code>libcdb.a</code> of TinyCDB.</p></li>
+<li><p>do <code>make</code> to compile.  This require <code>cdb.h</code> and <code>libcdb.a</code> of TinyCDB.
+For the Make prodecure on Linux, consult <code>.travis.yml</code>.</p></li>
 <li><p>do <code>make install</code> to copy the compile executable image to the
 executable image directory.  The default directory is <code>/usr/local/libexec</code>.</p></li>
 </ol>
@@ -73,9 +90,10 @@ An example of daemontools run file is available <code>at example-daemontools.txt
 <a id="bug-reports-and-comments" class="anchor" href="#bug-reports-and-comments" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bug reports and comments</h2>
 
 <p>The source code repository and issue tracker is available in Github at
-<a href="http://github.com/jj1bdx/dbskkd-cdb">http://github.com/jj1bdx/dbskkd-cdb</a></p>
-
-<p>Inquiries and comments are welcome in Japanese and English.</p>
+<a href="http://github.com/jj1bdx/dbskkd-cdb">http://github.com/jj1bdx/dbskkd-cdb</a>.<br>
+Inquiries and comments are welcome by the forms of GitHub Pull Requests
+and issues in Japanese and English.  If you do not want to use GitHub,
+contact Kenji Rikitake by email for your proposals.</p>
 
 <h2>
 <a id="acknowledgment" class="anchor" href="#acknowledgment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Acknowledgment</h2>
