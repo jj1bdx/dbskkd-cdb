@@ -20,7 +20,7 @@ See `skk-server-protocol.txt` for the details.
 
 ## License
 
-See `LICENSE`. BSD 3-Clause.
+See `LICENSE`. The MIT License.
 
 ## Test environment
 
