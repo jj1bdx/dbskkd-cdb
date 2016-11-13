@@ -24,7 +24,7 @@ See `LICENSE`. The MIT License.
 ## Test environment
 
 * FreeBSD/amd64 11.0-STABLE
-* On [Travis CI](https://travis-ci.org/jj1bdx/dbskkd-cdb): Ubuntu 12.04 LTS Precise
+* Periodically tested on [Travis CI](https://travis-ci.org/jj1bdx/dbskkd-cdb) with both clang and gcc
 
 ## Installation procedure
 
@@ -34,10 +34,10 @@ See `LICENSE`. The MIT License.
    as `SKK-JISYO.L.cdb`.  This `.cdb` file should be placed with the filename
    specified in `JISYO_FILE` macro in `dbskkd-cdb.c`.
 
-2. do `make` to compile.  This require `cdb.h` and `libcdb.a` of TinyCDB.
+2. Do `make` to compile.  This require `cdb.h` and `libcdb.a` of TinyCDB.
    For the Make prodecure on Linux, consult `.travis.yml`.
 
-3. do `make install` to copy the compile executable image to the
+3. Do `make install` to copy the compile executable image to the
    executable image directory.  The default directory is `/usr/local/libexec`.
 
 ## User privilege on installation
