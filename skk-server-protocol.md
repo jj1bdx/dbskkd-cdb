@@ -1,7 +1,6 @@
 # SKK server-client protocol for dbskkd-cdb (unofficial)
 
-* Written by Kenji Rikitake
-* Content last update 13-NOV-2016
+By Kenji Rikitake, last updated 13-NOV-2016
 
 ## Notes
 
