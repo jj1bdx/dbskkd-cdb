@@ -2,8 +2,13 @@
 
 ## 20161113
 
+* Version 3.00
+* Completely revise the source code
+  - See git log for the details
 * Revise and rewrite `CHANGES` as `CHANGES.md`
 * Revise `skk-server-protocol.txt` to `skk-server-protocol.md`
+* Add `examples.md`
+* Remove `example-inetd.txt` and `example-daemontools.txt`
 
 ## 20161003
 
@@ -13,7 +18,7 @@
 
 * Change only documents, no code change
 * Revise `READMEJP` to `READMEJP.md` with UTF-8
-* Delete `README` (see `README.md` instead)
+* Remove `README` (see `README.md` instead)
 
 ## 20090206
 
