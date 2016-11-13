@@ -16,7 +16,7 @@ The following is an example run file for daemontools service directory.
 
 The following is a set of example inetd entries for dbskkd-cdb.
 
-*Note: set unprivileged and dedicated uid for execution. Define **both** IPv4 and IPv6 entries for dual-stack support.*
+*Note: set unprivileged and dedicated uid for execution.* Define *both* IPv4 and IPv6 entries for dual-stack support.
 
     skkserv	stream	tcp	nowait	dbskkd	/usr/local/libexec/dbskkd-cdb dbskkd-cdb
     skkserv	stream	tcp6	nowait	dbskkd	/usr/local/libexec/dbskkd-cdb dbskkd-cdb
