@@ -1,41 +1,32 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>dbskkd-cdb by jj1bdx</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>dbskkd-cdb</h1>
-        <p>SKK dictionary server based on cdb</p>
+    <section class="page-header">
+      <h1 class="project-name">dbskkd-cdb</h1>
+      <h2 class="project-tagline">SKK dictionary server based on cdb</h2>
+      <a href="https://github.com/jj1bdx/dbskkd-cdb" class="btn">View on GitHub</a>
+      <a href="https://github.com/jj1bdx/dbskkd-cdb/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jj1bdx/dbskkd-cdb/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <p class="view"><a href="https://github.com/jj1bdx/dbskkd-cdb">View the Project on GitHub <small>jj1bdx/dbskkd-cdb</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/jj1bdx/dbskkd-cdb/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/jj1bdx/dbskkd-cdb/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/jj1bdx/dbskkd-cdb">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="dbskkd-cdb-readmeinstallation-note-in-english" class="anchor" href="#dbskkd-cdb-readmeinstallation-note-in-english" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>dbskkd-cdb readme/installation note in English</h1>
 
-<p>for version dbskkd-cdb-2.00</p>
+<p>for version dbskkd-cdb-3.00</p>
 
 <p>by Kenji Rikitake <a href="mailto:kenji.rikitake@acm.org">kenji.rikitake@acm.org</a></p>
 
-<p>last updated 2-OCT-2016</p>
+<p>last updated 13-NOV-2016</p>
 
 <h2>
 <a id="travis-ci-build-status-for-the-master-branch" class="anchor" href="#travis-ci-build-status-for-the-master-branch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Travis CI build status for the master branch</h2>
@@ -47,9 +38,8 @@
 
 <p>dbskkd-cdb is a dictionary server for SKK Japanese Input Method system.
 For building the executable file, <a href="http://www.corpit.ru/mjt/tinycdb.html">TinyCDB</a>
-is required.</p>
-
-<p>See <code>skk-server-protocol.txt</code> for the details.</p>
+is required.
+See <code>skk-server-protocol.md</code> for the details of the server-client protocol.</p>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
@@ -60,8 +50,8 @@ is required.</p>
 <a id="test-environment" class="anchor" href="#test-environment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Test environment</h2>
 
 <ul>
-<li>FreeBSD/amd64 10.0-STABLE</li>
-<li>On <a href="https://travis-ci.org/jj1bdx/dbskkd-cdb">Travis CI</a>: Ubuntu 12.04 LTS Precise</li>
+<li>FreeBSD/amd64 11.0-STABLE</li>
+<li>Periodically tested on <a href="https://travis-ci.org/jj1bdx/dbskkd-cdb">Travis CI</a> with both clang and gcc</li>
 </ul>
 
 <h2>
@@ -73,9 +63,9 @@ The default source file name is <code>/usr/local/share/skk/SKK-JISYO.L</code>
 and the converted cdb file will be placed in the current directory
 as <code>SKK-JISYO.L.cdb</code>.  This <code>.cdb</code> file should be placed with the filename
 specified in <code>JISYO_FILE</code> macro in <code>dbskkd-cdb.c</code>.</p></li>
-<li><p>do <code>make</code> to compile.  This require <code>cdb.h</code> and <code>libcdb.a</code> of TinyCDB.
+<li><p>Do <code>make</code> to compile.  This require <code>cdb.h</code> and <code>libcdb.a</code> of TinyCDB.
 For the Make prodecure on Linux, consult <code>.travis.yml</code>.</p></li>
-<li><p>do <code>make install</code> to copy the compile executable image to the
+<li><p>Do <code>make install</code> to copy the compile executable image to the
 executable image directory.  The default directory is <code>/usr/local/libexec</code>.</p></li>
 </ol>
 
@@ -87,8 +77,7 @@ the uid.</p>
 
 <p>DO NOT invoke with the root or superuser privilege.</p>
 
-<p>An example of <code>inetd.conf</code> is available at <code>example-inetd.txt</code>.
-An example of daemontools run file is available <code>at example-daemontools.txt</code>.</p>
+<p>See <code>examples.md</code> for the configuration examples.</p>
 
 <h2>
 <a id="note-on-collecting-user-information" class="anchor" href="#note-on-collecting-user-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Note on collecting user information</h2>
@@ -115,14 +104,16 @@ contact Kenji Rikitake by email for your proposals.</p>
 Takashi Sakamoto, Fumitoshi Ukai, Toshinori Maeno, Yasuhiro Honda,
 Hayao Nakahara, Takahiro Kikuchi, Hideo Matsumoto, Hidetaka Koie,
 Takao Kawamura, Hideto Kihara, Rikishi Inakazu, Makoto Matsushita,
-Atsushi Yamagata, Tatsuya Kinoshita, Ryosuke Nakai.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/jj1bdx">jj1bdx</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+Atsushi Yamagata, Tatsuya Kinoshita, Ryosuke Nakai, Hajimu Umemoto.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jj1bdx/dbskkd-cdb">dbskkd-cdb</a> is maintained by <a href="https://github.com/jj1bdx">jj1bdx</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
+
+    </section>
+
+  
   </body>
 </html>
