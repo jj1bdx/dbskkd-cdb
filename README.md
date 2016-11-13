@@ -1,10 +1,10 @@
 # dbskkd-cdb readme/installation note in English
 
-for version dbskkd-cdb-2.00
+for version dbskkd-cdb-3.00
 
 by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
 
-last updated 2-OCT-2016
+last updated 13-NOV-2016
 
 ## Travis CI build status for the master branch
 
@@ -24,7 +24,7 @@ See `LICENSE`. The MIT License.
 
 ## Test environment
 
-* FreeBSD/amd64 10.0-STABLE
+* FreeBSD/amd64 11.0-STABLE
 * On [Travis CI](https://travis-ci.org/jj1bdx/dbskkd-cdb): Ubuntu 12.04 LTS Precise
 
 ## Installation procedure
@@ -48,8 +48,7 @@ the uid.
 
 DO NOT invoke with the root or superuser privilege.
 
-An example of `inetd.conf` is available at `example-inetd.txt`.
-An example of daemontools run file is available `at example-daemontools.txt`.
+See `examples.md` for the configuration examples.
 
 ## Note on collecting user information
 
@@ -73,4 +72,4 @@ Makahito Sato, Mikio Nakajima, Yukiyoshi Kameyama, Masaaki Sato,
 Takashi Sakamoto, Fumitoshi Ukai, Toshinori Maeno, Yasuhiro Honda,
 Hayao Nakahara, Takahiro Kikuchi, Hideo Matsumoto, Hidetaka Koie,
 Takao Kawamura, Hideto Kihara, Rikishi Inakazu, Makoto Matsushita,
-Atsushi Yamagata, Tatsuya Kinoshita, Ryosuke Nakai.
+Atsushi Yamagata, Tatsuya Kinoshita, Ryosuke Nakai, Hajimu Umemoto.
