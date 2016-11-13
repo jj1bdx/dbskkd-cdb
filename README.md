@@ -15,8 +15,7 @@ last updated 13-NOV-2016
 dbskkd-cdb is a dictionary server for SKK Japanese Input Method system.
 For building the executable file, [TinyCDB](http://www.corpit.ru/mjt/tinycdb.html)
 is required.
-
-See `skk-server-protocol.txt` for the details.
+See `skk-server-protocol.md` for the details of the server-client protocol.
 
 ## License
 
