@@ -1,8 +1,9 @@
 # List of changes
 
-## 20161104
+## 20161113
 
 * Revise and rewrite `CHANGES` as `CHANGES.md`
+* Revise `skk-server-protocol.txt` to `skk-server-protocol.md`
 
 ## 20161003
 
@@ -12,7 +13,7 @@
 
 * Change only documents, no code change
 * Revise `READMEJP` to `READMEJP.md` with UTF-8
-* Delete `README` (read `README.md` instead)
+* Delete `README` (see `README.md` instead)
 
 ## 20090206
 
