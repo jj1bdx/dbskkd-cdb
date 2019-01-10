@@ -1,5 +1,7 @@
 # dbskkd-cdb readme/installation note in English
 
+*Announcement 10-JAN-2018: no further development will be made on dbskkd-cdb.*
+
 for version dbskkd-cdb-3.00
 
 by Kenji Rikitake <mailto:kenji.rikitake@acm.org>
